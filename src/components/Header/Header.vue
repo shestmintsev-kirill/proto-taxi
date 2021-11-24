@@ -1,0 +1,123 @@
+<template>
+  <header class="wrapper">
+    <div
+      class="wrapper-header header"
+      :style="{ 'justify-content': $route.params.id ? 'center' : 'flex-start' }"
+    >
+      <div v-if="$route.params.id" class="header-course">
+        <img
+          class="header-course__btn"
+          src="@/assets/images/Header/back.svg"
+          alt="back"
+          @click="$router.go(-1)"
+        />
+        <p class="header-course__name">{{ $route.query.n }}</p>
+      </div>
+      <div v-else class="header-title">{{ headerTitle }}</div>
+      <div class="header-question">
+        <img
+          class="header-question__image"
+          src="@/assets/images/Header/question.svg"
+          alt="question"
+          @click="isShowAccount = activeTabType.length === 2 ? true : false"
+        />
+      </div>
+    </div>
+    <Helper v-if="isShowAccount" :helpInfo="helpInfo" @close-modal="isShowAccount = false" />
+  </header>
+</template>
+
+<script>
+import Helper from './Helper';
+import { HELP_MODAL } from './HelpModal.js';
+
+export default {
+  name: 'Header',
+  components: {
+    Helper
+  },
+  props: {
+    tabs: {
+      type: Array,
+      default: () => []
+    }
+  },
+  data: () => ({
+    isShowAccount: false
+  }),
+  computed: {
+    activeTabType() {
+      return this.$route.fullPath.split('/');
+    },
+    headerTitle() {
+      return this.tabs.find(t => t.type === this.activeTabType[1]).title;
+    },
+    helpInfo() {
+      document.documentElement.scrollTop = document.documentElement.scrollHeight;
+      const objInfo = {};
+      if (this.activeTabType.length === 2) {
+        const nameRoute = HELP_MODAL[this.tabs.find(t => t.type === this.activeTabType[1]).type];
+        if (!nameRoute) return;
+        const { text, top, left } = nameRoute;
+        objInfo.modalText = text;
+        objInfo.modalTop = top;
+        objInfo.modalLeft = left;
+      }
+      return objInfo;
+    }
+  }
+};
+</script>
+
+<style scoped lang="scss">
+.wrapper {
+  &-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    background: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 71, 191, 0.25);
+    border-radius: 0px 0px 30px 30px;
+    padding: 15px 20px 40px 20px;
+    z-index: 99;
+  }
+
+  .header {
+    display: flex;
+
+    &-title {
+      font-size: 34px;
+      font-weight: 700;
+    }
+
+    &-question {
+      position: absolute;
+      top: 25px;
+      right: 22px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      width: 29px;
+    }
+
+    &-course {
+      display: flex;
+      align-items: center;
+      margin-top: 40px;
+
+      &__btn {
+        position: absolute;
+        left: 50px;
+      }
+
+      &__name {
+        font-weight: 500;
+        font-size: 17px;
+      }
+    }
+  }
+}
+</style>

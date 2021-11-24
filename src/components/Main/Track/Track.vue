@@ -1,0 +1,133 @@
+<template>
+  <div ref="wrapper" class="track-wrapper">
+    <div
+      class="track"
+      :style="{
+        'background-image': `url(${require('@/assets/images/Track/emptyTrack.png')})`
+      }"
+    >
+      <img
+        v-for="img in images"
+        :key="img.id"
+        class="anim scaleAnimation"
+        :class="[
+          { scaleAnimation: img.id % 2 !== 0 },
+          { rotateAnimation: img.id % 2 === 0 },
+          `anim${img.id}`
+        ]"
+        :style="{
+          top: img.top,
+          left: img.left
+        }"
+        :src="require(`@/assets/images/Track/trackSvg/${img.id}.svg`)"
+        alt="animation"
+      />
+
+      <img
+        v-for="point in points"
+        :key="point.name"
+        :src="require(`@/assets/images/Track/TrackCourseTabs/${point.tabImgSrc}.svg`)"
+        alt="point"
+        class="track-point"
+        :class="{
+          'track-current-point': point.id === lastCurrentCourseId
+        }"
+        :style="{ top: point.position.top, left: point.position.left }"
+        @click="goToCourse(point)"
+      />
+    </div>
+  </div>
+</template>
+
+<script>
+import animationSvg from './animationSvg';
+import points from './points';
+
+export default {
+  name: 'Track',
+  computed: {
+    images() {
+      return animationSvg;
+    },
+    points() {
+      return points;
+    },
+    lastCurrentCourseId() {
+      if (localStorage.startCourse) {
+        return JSON.parse(localStorage.startCourse).id;
+      }
+      return null;
+    }
+  },
+  mounted() {
+    this.startCoursePosition();
+  },
+  methods: {
+    goToCourse(point) {
+      localStorage.startCourse = JSON.stringify({
+        id: point.id,
+        name: point.name
+      });
+      this.$router.push({
+        name: 'course',
+        params: { id: point.id },
+        query: { n: point.name }
+      });
+    },
+    startCoursePosition() {
+      this.$refs.wrapper.scrollLeft = 110;
+      document.documentElement.scrollTop = document.documentElement.scrollHeight;
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+.track-wrapper {
+  overflow: auto;
+  margin-top: -65px;
+  margin-bottom: -90px;
+  background: linear-gradient(167.11deg, #b6c9ff 10.72%, #5081ff 98.5%);
+}
+
+.track {
+  position: relative;
+  min-height: 100vh;
+  height: 1260px;
+  width: 600px;
+  overflow: hidden;
+
+  &-point {
+    z-index: 3;
+    position: absolute;
+  }
+
+  &-current-point {
+    transform: scale(1);
+  }
+}
+
+.anim {
+  position: absolute;
+}
+
+.scaleAnimation {
+  animation: scale 2s infinite cubic-bezier(0, 0, 1, 1);
+}
+
+/* .rotateAnimation {
+  animation: rotateY 3s infinite;
+} */
+
+/* @keyframes rotateY {
+  50% {
+    transform: rotateY(35deg);
+  }
+} */
+
+@keyframes scale {
+  50% {
+    transform: scale(1.15);
+  }
+}
+</style>

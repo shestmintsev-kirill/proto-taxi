@@ -1,0 +1,40 @@
+<template>
+  <div v-if="isShow" class="modal">
+    <slot />
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'TheModal',
+  components: {},
+  props: {
+    show: {
+      type: Boolean,
+      default: false
+    },
+    maxWidth: {
+      type: [String, Number],
+      default: ''
+    }
+  },
+  computed: {
+    isShow: {
+      get() {
+        return this.show;
+      },
+      set() {
+        this.$emit('close-modal');
+      }
+    }
+  },
+  methods: {
+    closeModal() {
+      this.$emit('close-modal');
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+</style>
