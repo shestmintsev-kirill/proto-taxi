@@ -9,22 +9,18 @@
           ref="loginInput"
           :style="{ 'border-color': confirmLogin && '#ff7777' }"
           class="input"
-          type="email"
           placeholder="ID водителя"
         />
         <input
           v-model="password"
           :style="{ 'border-color': confirmLogin && '#ff7777' }"
           class="input"
-          type="password"
           placeholder="Пароль"
         />
       </div>
       <div v-if="confirmLogin" class="confirm">Введен неверный логин или пароль</div>
       <button class="button" @click="setLogin">Войти</button>
-      <div class="modal__restore" @click="$router.push({ name: 'forgotPassword' })">
-        Забыли пароль?
-      </div>
+      <div class="modal__restore" @click="$router.push({ name: 'forgotPassword' })">Забыли пароль?</div>
     </div>
   </div>
 </template>
@@ -43,15 +39,14 @@ export default {
     if (localStorage.isLogin) {
       this.$router.push('/home');
     }
-    this.$refs.loginInput.focus();
+    // this.$refs.loginInput.focus();
   },
   methods: {
     setLogin() {
       if (
         // this.login === 'user@example.com' &&
         // this.password === 'user@example.com'
-        this.login === '1' &&
-        this.password === '1'
+        this.login === '1'
       ) {
         localStorage.isLogin = true;
         this.$router.push('/home');
