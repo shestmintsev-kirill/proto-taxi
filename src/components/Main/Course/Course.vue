@@ -2,8 +2,8 @@
   <div class="course">
     <div class="modal description-wrapper">
       <p class="course-description">
-        Раздел Русского языка посвящён темам, которые связаны с навыками общения с пассажарами,
-        сотрудниками ДПС и решению возможных конфликтных ситуаций.
+        Раздел Русского языка посвящён темам, которые связаны с навыками общения с пассажарами, сотрудниками
+        ДПС и решению возможных конфликтных ситуаций.
       </p>
     </div>
     <div>
@@ -32,9 +32,7 @@
                 :loading="false"
               >
                 <div slot="legend-caption">
-                  <span :style="{ color: !calculateProgress(chapter) && '#3118CD' }">
-                    {{ calculateProgress(chapter) }}%
-                  </span>
+                  <span> {{ calculateProgress(chapter) }}% </span>
                 </div>
               </vue-ellipse-progress>
               <div class="title">{{ chapter.title }}</div>
@@ -46,11 +44,7 @@
             />
           </div>
           <div class="track-wrapper">
-            <div
-              v-for="(subChapter, i) in chapter.subChapters"
-              :key="i"
-              class="course-progress__track"
-            >
+            <div v-for="(subChapter, i) in chapter.subChapters" :key="i" class="course-progress__track">
               <img :src="getImageStatusCourse(subChapter)" alt="statusCourse" />
               <div class="name">{{ subChapter.title }}</div>
             </div>
@@ -59,7 +53,7 @@
             class="course-progress__btn button"
             :to="{ name: 'StartChapter', query: $route.query }"
           >
-            Продолжить
+            {{ calculateProgress(chapter) ? 'Продолжить' : 'Начать' }}
           </router-link>
         </div>
       </div>
@@ -114,14 +108,9 @@ export default {
   .description-wrapper {
     padding: 20px 25px;
     margin-bottom: 20px;
-    background: linear-gradient(
-        157.27deg,
-        rgba(255, 255, 255, 0.06) -3.22%,
-        rgba(255, 255, 255, 0) 99.02%
-      ),
+    background: linear-gradient(157.27deg, rgba(255, 255, 255, 0.06) -3.22%, rgba(255, 255, 255, 0) 99.02%),
       rgba(255, 255, 255, 0.2);
-    box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.6),
-      inset 0px -2px 35px rgba(255, 255, 255, 0.3);
+    box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.6), inset 0px -2px 35px rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(32px);
     border-radius: 30px;
   }

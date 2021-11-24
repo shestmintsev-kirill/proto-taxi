@@ -6,7 +6,7 @@
       <div class="modal__input">
         <input
           v-model="login"
-          ref="loginInput"
+          type="text"
           :style="{ 'border-color': confirmLogin && '#ff7777' }"
           class="input"
           placeholder="ID водителя"
@@ -14,6 +14,7 @@
         <input
           v-model="password"
           :style="{ 'border-color': confirmLogin && '#ff7777' }"
+          type="text"
           class="input"
           placeholder="Пароль"
         />
@@ -28,28 +29,21 @@
 <script>
 export default {
   name: 'Login',
-  data() {
-    return {
-      login: '',
-      password: '',
-      confirmLogin: false
-    };
-  },
+  data: () => ({
+    login: '',
+    password: '',
+    confirmLogin: false
+  }),
   mounted() {
     if (localStorage.isLogin) {
-      this.$router.push('/home');
+      this.$router.push('/track');
     }
-    // this.$refs.loginInput.focus();
   },
   methods: {
     setLogin() {
-      if (
-        // this.login === 'user@example.com' &&
-        // this.password === 'user@example.com'
-        this.login === '1'
-      ) {
+      if (this.login === 'user@example.com' && this.password === '123') {
         localStorage.isLogin = true;
-        this.$router.push('/home');
+        this.$router.push('/track');
       }
       this.confirmLogin = true;
     },
@@ -69,8 +63,10 @@ export default {
     padding: 30px 25px;
 
     &__title {
-      margin-top: 17px;
-      margin-bottom: 24px;
+      align-self: flex-start;
+      margin-top: 25px;
+      margin-bottom: 12px;
+      margin-left: 20px;
       font-weight: 500;
       font-size: 24px;
       line-height: 28px;

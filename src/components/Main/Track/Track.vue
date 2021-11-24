@@ -36,15 +36,27 @@
         @click="goToCourse(point)"
       />
     </div>
+    <TheModal :show="isShowModal" maxWidth="650" @close-modal="isShowModal = false">
+      <LessonStarted @close-modal="isShowModal = false" />
+    </TheModal>
   </div>
 </template>
 
 <script>
+import TheModal from '@/components/modals/TheModal';
+import LessonStarted from '@/components/modals/LessonStarted';
 import animationSvg from './animationSvg';
 import points from './points';
 
 export default {
   name: 'Track',
+  components: {
+    TheModal,
+    LessonStarted
+  },
+  data: () => ({
+    isShowModal: false
+  }),
   computed: {
     images() {
       return animationSvg;
@@ -61,6 +73,7 @@ export default {
   },
   mounted() {
     this.startCoursePosition();
+    this.checkedStartCourse();
   },
   methods: {
     goToCourse(point) {
@@ -77,6 +90,12 @@ export default {
     startCoursePosition() {
       this.$refs.wrapper.scrollLeft = 110;
       document.documentElement.scrollTop = document.documentElement.scrollHeight;
+    },
+    checkedStartCourse() {
+      if (localStorage.startCourse && !localStorage.firstLogin) {
+        this.startCourse = localStorage.startCourse;
+        this.isShowModal = true;
+      }
     }
   }
 };
@@ -87,7 +106,7 @@ export default {
   overflow: auto;
   margin-top: -65px;
   margin-bottom: -90px;
-  background: linear-gradient(167.11deg, #b6c9ff 10.72%, #5081ff 98.5%);
+  background: #e5e5e5;
 }
 
 .track {

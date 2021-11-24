@@ -25,6 +25,13 @@ export default {
       default: () => ({})
     }
   },
+  mounted() {
+    document.documentElement.scrollTop = document.documentElement.scrollHeight;
+    document.body.style.overflow = 'hidden';
+  },
+  beforeDestroy() {
+    document.body.style.overflow = null;
+  },
   methods: {
     closeModal() {
       this.$emit('close-modal');

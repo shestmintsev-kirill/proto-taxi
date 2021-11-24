@@ -38,9 +38,9 @@ export default {
   width: 100%;
   height: 90px;
   background: #ffffff;
-  box-shadow: inset 0px 2px 0px rgba(182, 195, 255, 0.5);
+  box-shadow: inset 0px 2px 0px rgb(219, 225, 255);
   border-radius: 30px 30px 0px 0px;
-  padding: 10px 50px;
+  padding: 10px 40px;
   z-index: 10;
 
   &-btns {
@@ -57,7 +57,7 @@ export default {
       bottom: 10px;
       width: 100%;
       height: 2px;
-      background: #3118cd;
+      background: #414147;
       transition: all 0.5s ease;
       animation: opacity 0.5s linear;
     }

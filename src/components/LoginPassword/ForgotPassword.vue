@@ -17,13 +17,7 @@
           Введите номер телефона для смены пароля и мы пришлём код для подтверждения:
         </div>
         <div class="modal__input">
-          <input
-            v-model="telephone"
-            type="tel"
-            class="input"
-            placeholder="Телефон"
-            @input="acceptNumber"
-          />
+          <input v-model="telephone" type="tel" class="input" placeholder="Телефон" @input="acceptNumber" />
         </div>
         <div class="button" @click="confirm">Подтвердить</div>
       </div>
@@ -104,6 +98,7 @@ export default {
   }
 
   .button {
+    margin-top: 40px;
     max-width: 400px;
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" @click.self="closeModal">
     <div class="modal">
       <div class="modal__title">Начатый урок</div>
       <div
@@ -9,9 +9,7 @@
         }"
         @click="closeModal"
       />
-      <div class="modal__text">
-        Привет! У вас есть начатый урок, хотите продолжить?
-      </div>
+      <div class="modal__text">Привет! У вас есть начатый урок, хотите продолжить?</div>
       <div class="button" @click="goToStartedSourse()">Продолжить</div>
     </div>
   </div>
@@ -28,6 +26,10 @@ export default {
   },
   mounted() {
     localStorage.firstLogin = true;
+    document.body.style.overflow = 'hidden';
+  },
+  beforeDestroy() {
+    document.body.style.overflow = null;
   },
   methods: {
     closeModal() {
@@ -47,11 +49,11 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;

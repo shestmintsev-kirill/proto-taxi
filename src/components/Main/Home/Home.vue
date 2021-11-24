@@ -34,28 +34,17 @@
           <p>Выйти</p>
         </div>
       </div>
-      <TheModal :show="isShowModal" maxWidth="650" @close-modal="isShowModal = false">
-        <LessonStarted :startCourseIndex="startCourseIndex" @close-modal="isShowModal = false" />
-      </TheModal>
     </div>
   </div>
 </template>
 
 <script>
-import TheModal from '@/components/modals/TheModal';
-import LessonStarted from '@/components/modals/LessonStarted';
 import points from '@/components/Main/Track/points';
 
 export default {
   name: 'Home',
-  components: {
-    TheModal,
-    LessonStarted
-  },
   data() {
     return {
-      isShowModal: false,
-      startCourseIndex: null,
       userManu: ['Аккаунт КисАрт', 'Пароль', 'Прогресс']
     };
   },
@@ -82,16 +71,7 @@ export default {
       return Math.ceil(middleValue.reduce((acc, value) => acc + value) / middleValue.length);
     }
   },
-  mounted() {
-    this.checkedStartCourse();
-  },
   methods: {
-    checkedStartCourse() {
-      if (localStorage.startCourse && !localStorage.firstLogin) {
-        this.startCourse = localStorage.startCourse;
-        this.isShowModal = true;
-      }
-    },
     exit() {
       localStorage.removeItem('firstLogin');
       localStorage.removeItem('isLogin');

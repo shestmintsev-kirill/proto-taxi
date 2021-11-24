@@ -1,13 +1,14 @@
 <template>
-  <div v-if="isShow" class="modal">
-    <slot />
-  </div>
+  <transition name="fade" mode="out-in">
+    <div v-if="isShow" class="modal">
+      <slot />
+    </div>
+  </transition>
 </template>
 
 <script>
 export default {
   name: 'TheModal',
-  components: {},
   props: {
     show: {
       type: Boolean,

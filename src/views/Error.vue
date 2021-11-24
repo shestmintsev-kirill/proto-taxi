@@ -1,10 +1,5 @@
 <template>
-  <div
-    class="eror-wrapper"
-    :style="{
-      'background-image': `url(${require('@/assets/images/Main/map.png')})`
-    }"
-  >
+  <div class="eror-wrapper">
     <div class="modal">
       <div class="modal__number">{{ error.status }}</div>
       <div class="modal__error">
@@ -18,7 +13,7 @@
 
 <script>
 export default {
-  name: 'forgotPassword',
+  name: 'Error',
   props: {
     error: {
       type: Object,
@@ -37,6 +32,7 @@ export default {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background-color: #f3f3f3;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -54,11 +50,11 @@ export default {
     font-size: 160px;
     line-height: 169px;
     mix-blend-mode: multiply;
-    color: #c9d3fe;
+    color: #bebebe;
   }
 
   &__title {
-    margin: 50px 0 40px 0;
+    margin: 50px 0 35px 0;
     font-weight: bold;
     font-size: 34px;
     line-height: 40px;

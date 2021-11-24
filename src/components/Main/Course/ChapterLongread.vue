@@ -48,30 +48,43 @@
     </div>
 
     <div v-if="step === 2" ref="longread" class="longread">
-      <div class="blur-modal">
+      <div v-if="showItem <= 3" class="blur-modal">
         Попробуем это на практике.<br />
         <strong>Выберите, корректно ли звучит такое обращение к пассажиру-девушке?</strong>
       </div>
       <transition name="fade" mode="out-in">
-        <div class="longread-replics">
+        <div v-if="showItem <= 3" class="longread-replics">
           <div class="replica left-replica">Едем на 1-й Поперечный проезд?</div>
         </div>
       </transition>
       <transition name="fade" mode="out-in">
-        <div class="longread-dialog" :style="{ 'margin-top': showItem ? '0' : '-90px' }">
+        <div v-if="showItem <= 3" class="longread-dialog" :style="{ 'margin-top': showItem ? '0' : '-90px' }">
           <img
             :src="require(`@assets/images/Course/Chapter/${showItem ? 'dialog3blur' : 'dialog3'}.png`)"
             alt="dialog"
           />
         </div>
+        <div v-if="showItem === 4" class="longread-dialog">
+          <img src="@assets/images/Course/Chapter/finalImage.png" alt="finalImage" />
+        </div>
       </transition>
       <transition name="fade" mode="out-in">
-        <div v-if="showItem" class="longread-question">
+        <div v-if="showItem && showItem !== 4" class="longread-question">
           <div class="wrapper">
-            <div class="question-btn" @click="showItem !== 3 ? (showItem = 2) : null">
+            <div
+              v-if="showItem <= 3"
+              :class="{ 'question-false': showItem === 2 }"
+              class="question-btn"
+              @click="showItem !== 3 ? (showItem = 2) : null"
+            >
               <p>ДА</p>
             </div>
-            <div class="question-btn" @click="showItem = 3">
+            <div
+              v-if="showItem <= 3"
+              :class="{ 'question-true': showItem === 3 }"
+              class="question-btn"
+              @click="showItem = 3"
+            >
               <p>НЕТ</p>
             </div>
           </div>
@@ -84,7 +97,15 @@
             уточняете. «Девушка» допустимо только в той ситуации, когда надо окликнуть. <br /><br />
             Например, «Девушка, извините, вы забыли перчатки».
           </div>
-          <button v-if="showItem === 3" class="button">Далее</button>
+          <button v-if="showItem === 3" class="button" @click="showItem = 4">Далее</button>
+        </div>
+        <div v-if="showItem === 4" class="blur-modal">
+          <p>
+            Поздравляем с завершением первой поездки! <br /><br />Теперь вы знаете, как корректно
+            приветствовать разных пассажиров и уточнять адрес поездки. <br /><br />
+            Если захотите освежить информацию из этой поездки, сможете в любое время вернуться назад.
+          </p>
+          <button class="button final-btn" @click="$router.push({ name: 'track' })">Едем дальше</button>
         </div>
       </transition>
     </div>
@@ -105,40 +126,37 @@ export default {
     }
   },
   mounted() {
-    document.documentElement.scrollTop = 0;
+    this.scrollToTop();
     if (this.step === 2) {
       setTimeout(() => {
         this.showItem = 1;
       }, 2000);
     }
   },
-  // created() {
-  //   window.addEventListener('scroll', this.handleScroll);
-  // },
-  // destroyed() {
-  //   window.removeEventListener('scroll', this.handleScroll);
-  // },
   methods: {
-    // handleScroll() {
-    //   let maxScrollY = document.documentElement.scrollHeight - this.$refs.longread.scrollHeight;
-    //   if (window.pageYOffset === maxScrollY && this.showItem === 0) {
-    //     this.goToTest();
-    //   }
-    // },
     goToTest() {
+      this.scrollToBottom();
       this.showItem = 1;
       setTimeout(() => {
         this.showItem = 2;
       }, 2000);
     },
     goToDialog() {
+      this.scrollToTop();
       this.showItem = 3;
       setTimeout(() => {
         this.showItem = 4;
+        this.scrollToBottom();
       }, 2000);
     },
     goToLast() {
       this.$router.replace({ name: 'StartChapter', query: { n: this.$route.query.n, g: 2 } });
+    },
+    scrollToTop() {
+      document.documentElement.scrollTop = 0;
+    },
+    scrollToBottom() {
+      document.documentElement.scrollTop = document.documentElement.scrollHeight;
     }
   }
 };
@@ -151,10 +169,22 @@ export default {
 
   .blur-modal {
     padding: 25px;
+
+    p {
+      line-height: 20px;
+    }
+
+    .final-btn {
+      margin-top: 20px;
+    }
   }
 
   img[alt='audio'] {
     margin-top: 22px;
+  }
+
+  img[alt='finalImage'] {
+    margin-bottom: 20px;
   }
 
   &-dialog {

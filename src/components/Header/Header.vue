@@ -53,7 +53,6 @@ export default {
       return this.tabs.find(t => t.type === this.activeTabType[1]).title;
     },
     helpInfo() {
-      document.documentElement.scrollTop = document.documentElement.scrollHeight;
       const objInfo = {};
       if (this.activeTabType.length === 2) {
         const nameRoute = HELP_MODAL[this.tabs.find(t => t.type === this.activeTabType[1]).type];
@@ -79,7 +78,7 @@ export default {
     justify-content: space-between;
     height: 100px;
     background: #ffffff;
-    box-shadow: 0px 4px 6px rgba(0, 71, 191, 0.25);
+    box-shadow: 0px 2px 6px rgba(102, 132, 183, 0.25);
     border-radius: 0px 0px 30px 30px;
     padding: 15px 20px 40px 20px;
     z-index: 99;

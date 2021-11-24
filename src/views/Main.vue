@@ -1,10 +1,5 @@
 <template>
-  <div
-    class="main-wrapper"
-    :style="{
-      'background-image': `url(${require('@/assets/images/Main/map.png')})`
-    }"
-  >
+  <div class="main-wrapper">
     <Header :tabs="tabs" />
     <main class="main-content">
       <transition name="fade" mode="out-in">
@@ -43,6 +38,7 @@ export default {
 <style lang="scss" scoped>
 .main-wrapper {
   min-height: 100vh;
+  background-color: #f3f3f3;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
