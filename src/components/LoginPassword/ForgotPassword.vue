@@ -112,7 +112,7 @@ export default {
   display: flex;
   justify-content: center;
   background: #ffffff;
-  box-shadow: 0px 4px 6px rgba(0, 71, 191, 0.25);
+  box-shadow: 0px 2px 6px rgba(102, 132, 183, 0.25);
   border-radius: 0px 0px 30px 30px;
   padding: 15px 20px 40px 20px;
   z-index: 99;
