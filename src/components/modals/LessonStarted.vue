@@ -59,7 +59,7 @@ export default {
   align-items: center;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(5px);
-  z-index: 9999;
+  z-index: 100;
 }
 
 .modal {

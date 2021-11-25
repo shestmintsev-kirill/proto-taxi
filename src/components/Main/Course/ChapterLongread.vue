@@ -30,7 +30,7 @@
             Подумайте, как правильно ответить в этой ситуации.<br />
             <strong>Произнесите ответ вслух и нажмите кнопку.</strong>
           </p>
-          <button class="button" @click="showItem = 5">Далее</button>
+          <button class="button" @click="goToTrueReplic()">Далее</button>
         </div>
       </div>
       <div v-if="showItem === 5" class="longread-nextbtn">
@@ -47,6 +47,8 @@
       </div>
     </div>
 
+    <!-- step 2 -->
+
     <div v-if="step === 2" ref="longread" class="longread">
       <div v-if="showItem <= 3" class="blur-modal">
         Попробуем это на практике.<br />
@@ -57,17 +59,15 @@
           <div class="replica left-replica">Едем на 1-й Поперечный проезд?</div>
         </div>
       </transition>
-      <transition name="fade" mode="out-in">
-        <div v-if="showItem <= 3" class="longread-dialog" :style="{ 'margin-top': showItem ? '0' : '-90px' }">
-          <img
-            :src="require(`@assets/images/Course/Chapter/${showItem ? 'dialog3blur' : 'dialog3'}.png`)"
-            alt="dialog"
-          />
-        </div>
-        <div v-if="showItem === 4" class="longread-dialog">
-          <img src="@assets/images/Course/Chapter/finalImage.png" alt="finalImage" />
-        </div>
-      </transition>
+      <div v-if="showItem <= 3" class="longread-dialog" :style="{ 'margin-top': showItem ? '0' : '-90px' }">
+        <img
+          :src="require(`@assets/images/Course/Chapter/${showItem ? 'dialog3blur' : 'dialog3'}.png`)"
+          alt="dialog"
+        />
+      </div>
+      <div v-if="showItem === 4" class="longread-dialog">
+        <img src="@assets/images/Course/Chapter/finalImage.png" alt="finalImage" />
+      </div>
       <transition name="fade" mode="out-in">
         <div v-if="showItem && showItem !== 4" class="longread-question">
           <div class="wrapper">
@@ -83,21 +83,23 @@
               v-if="showItem <= 3"
               :class="{ 'question-true': showItem === 3 }"
               class="question-btn"
-              @click="showItem = 3"
+              @click="questionTrue()"
             >
               <p>НЕТ</p>
             </div>
           </div>
-          <div
-            v-if="showItem === 2 || showItem === 3"
-            class="blur-modal"
-            :style="{ border: `2px solid ${showItem === 2 ? '#ff6954' : '#4dde08'}` }"
-          >
-            Чтобы обращение было корректным, в начало надо добавлять «Извините» или «Простите», если
-            уточняете. «Девушка» допустимо только в той ситуации, когда надо окликнуть. <br /><br />
-            Например, «Девушка, извините, вы забыли перчатки».
-          </div>
-          <button v-if="showItem === 3" class="button" @click="showItem = 4">Далее</button>
+          <transition name="fade" mode="out-in">
+            <div
+              v-if="showItem === 2 || showItem === 3"
+              class="blur-modal"
+              :style="{ border: `2px solid ${showItem === 2 ? '#ff6954' : '#4dde08'}` }"
+            >
+              Чтобы обращение было корректным, в начало надо добавлять «Извините» или «Простите», если
+              уточняете. «Девушка» допустимо только в той ситуации, когда надо окликнуть. <br /><br />
+              Например, «Девушка, извините, вы забыли перчатки».
+            </div>
+          </transition>
+          <button v-if="showItem === 3" class="button" @click="finalSlide()">Далее</button>
         </div>
         <div v-if="showItem === 4" class="blur-modal">
           <p>
@@ -105,7 +107,18 @@
             приветствовать разных пассажиров и уточнять адрес поездки. <br /><br />
             Если захотите освежить информацию из этой поездки, сможете в любое время вернуться назад.
           </p>
-          <button class="button final-btn" @click="$router.push({ name: 'track' })">Едем дальше</button>
+          <button
+            class="button final-btn"
+            @click="
+              $router.push({
+                name: 'course',
+                params: { id: $route.params.id },
+                query: { g: $route.query.g, n: $route.query.n }
+              })
+            "
+          >
+            Едем дальше
+          </button>
         </div>
       </transition>
     </div>
@@ -130,6 +143,7 @@ export default {
     if (this.step === 2) {
       setTimeout(() => {
         this.showItem = 1;
+        this.scrollToBottom();
       }, 2000);
     }
   },
@@ -152,6 +166,18 @@ export default {
     goToLast() {
       this.$router.replace({ name: 'StartChapter', query: { n: this.$route.query.n, g: 2 } });
     },
+    goToTrueReplic() {
+      this.showItem = 5;
+      this.scrollToBottom();
+    },
+    questionTrue() {
+      this.showItem = 3;
+      this.scrollToBottom();
+    },
+    finalSlide() {
+      this.showItem = 4;
+      this.scrollToTop();
+    },
     scrollToTop() {
       document.documentElement.scrollTop = 0;
     },
@@ -169,6 +195,7 @@ export default {
 
   .blur-modal {
     padding: 25px;
+    padding-bottom: 35px;
 
     p {
       line-height: 20px;

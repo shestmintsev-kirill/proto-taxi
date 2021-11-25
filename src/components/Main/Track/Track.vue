@@ -93,8 +93,10 @@ export default {
     },
     checkedStartCourse() {
       if (localStorage.startCourse && !localStorage.firstLogin) {
-        this.startCourse = localStorage.startCourse;
-        this.isShowModal = true;
+        setTimeout(() => {
+          this.startCourse = localStorage.startCourse;
+          this.isShowModal = true;
+        }, 500);
       }
     }
   }
