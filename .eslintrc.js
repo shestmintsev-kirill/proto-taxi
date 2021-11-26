@@ -3,7 +3,7 @@ module.exports = {
   env: {
     node: true
   },
-  'extends': [
+  extends: [
     'plugin:vue/essential',
     'eslint:recommended'
   ],
@@ -13,7 +13,7 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'camelcase': [0, {
+    camelcase: [0, {
       properties: 'never'
     }],
     'one-var': ['error', {
@@ -33,7 +33,7 @@ module.exports = {
       }
     }],
     'prefer-rest-params': 2,
-    'eqeqeq': [2, 'always'],
+    eqeqeq: [2, 'always'],
     'no-case-declarations': 2,
     'no-unneeded-ternary': 2,
     'no-else-return': ['error', {
@@ -54,16 +54,16 @@ module.exports = {
     'prefer-arrow-callback': [2, {
       allowNamedFunctions: true
     }],
-    'indent': [2, 2, {
+    indent: [2, 2, {
       SwitchCase: 1
     }],
-    'semi': [2, 'always'],
+    semi: [2, 'always'],
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'space-before-function-paren': [2, {
       anonymous: 'never',
       named: 'never'
     }],
-    'quotes': [2, 'single'],
+    quotes: [2, 'single'],
     'no-multi-assign': 2,
     'vue/html-indent': [2, 2, {
       attribute: 1,
@@ -110,4 +110,4 @@ module.exports = {
     }],
     'vue/valid-v-slot': 'off'
   }
-}
+};

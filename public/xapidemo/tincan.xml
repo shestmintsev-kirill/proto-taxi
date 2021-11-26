@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <tincan xmlns="http://projecttincan.com/tincan.xsd">
+      <activities>
+        <activity id="https://urbanlearning.mguu.ru/xapi/bkg/word/welcome" type="http://adlnet.gov/expapi/activities/course">
+          <name>демо «Дептранс»</name>
+          <description lang="en-US">демо «Дептранс»</description>
+          <launch lang="en-us">content/index.html</launch>
+        </activity>
+      </activities>
+    </tincan>

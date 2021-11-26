@@ -33,8 +33,6 @@ export default {
   justify-content: center;
   height: 100vh;
   background-color: #f3f3f3;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .modal {

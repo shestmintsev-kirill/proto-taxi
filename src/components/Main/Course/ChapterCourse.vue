@@ -22,7 +22,7 @@ export default {
   width: 100vw;
   min-height: 100vh;
   margin-top: -55px;
-  margin-bottom: -50px;
+  margin-bottom: -90px;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;

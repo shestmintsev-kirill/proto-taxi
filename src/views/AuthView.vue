@@ -17,8 +17,6 @@ export default {
   min-height: 100vh;
   min-width: 100vw;
   background-color: #f3f3f3;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-top: 40vw;
+  padding-top: 40%;
 }
 </style>

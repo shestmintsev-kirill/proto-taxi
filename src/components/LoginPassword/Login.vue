@@ -1,27 +1,29 @@
 <template>
   <div class="auth">
     <div class="modal">
-      <img src="@/assets/images/Login/logo.svg" alt="logo" />
-      <div class="modal__title">Вход</div>
-      <div class="modal__input">
-        <input
-          v-model="login"
-          type="text"
-          :style="{ 'border-color': confirmLogin && '#ff7777' }"
-          class="input"
-          placeholder="ID водителя"
-        />
-        <input
-          v-model="password"
-          :style="{ 'border-color': confirmLogin && '#ff7777' }"
-          type="text"
-          class="input"
-          placeholder="Пароль"
-        />
+      <div class="modal-wrapper">
+        <img src="@/assets/images/Login/logo.svg" alt="logo" />
+        <div class="modal__title">Вход</div>
+        <div class="modal__input">
+          <input
+            v-model="login"
+            type="text"
+            :style="{ 'border-color': confirmLogin && '#ff7777' }"
+            class="input"
+            placeholder="ID водителя"
+          />
+          <input
+            v-model="password"
+            :style="{ 'border-color': confirmLogin && '#ff7777' }"
+            type="text"
+            class="input"
+            placeholder="Пароль"
+          />
+        </div>
+        <div v-if="confirmLogin" class="confirm">Введен неверный логин или пароль</div>
+        <button class="button" @click="setLogin">Войти</button>
+        <div class="modal__restore" @click="$router.push({ name: 'forgotPassword' })">Забыли пароль?</div>
       </div>
-      <div v-if="confirmLogin" class="confirm">Введен неверный логин или пароль</div>
-      <button class="button" @click="setLogin">Войти</button>
-      <div class="modal__restore" @click="$router.push({ name: 'forgotPassword' })">Забыли пароль?</div>
     </div>
   </div>
 </template>
@@ -56,10 +58,15 @@ export default {
 
 <style lang="scss" scoped>
 .auth {
-  .modal {
+  .modal-wrapper {
     display: flex;
     align-items: center;
     flex-direction: column;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .modal {
     padding: 30px 25px;
 
     &__title {

@@ -4,10 +4,13 @@ import router from './router';
 import store from './store';
 import 'normalize-scss';
 import VueEllipseProgress from 'vue-ellipse-progress';
+import { registerGlobals } from './js';
 
 Vue.use(VueEllipseProgress);
 
 Vue.config.productionTip = false;
+
+registerGlobals();
 
 new Vue({
   router,

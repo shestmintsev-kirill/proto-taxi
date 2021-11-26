@@ -75,7 +75,7 @@ export default {
     exit() {
       localStorage.removeItem('firstLogin');
       localStorage.removeItem('isLogin');
-      this.$router.push('/auth');
+      // this.$router.push('/auth');
     }
   }
 };

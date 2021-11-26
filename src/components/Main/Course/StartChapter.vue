@@ -73,6 +73,7 @@ export default {
   }
 
   .billboard {
+    margin-top: 22px;
     width: 100%;
     z-index: 1;
   }

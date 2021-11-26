@@ -17,8 +17,10 @@
         <div v-if="showItem === 1" class="longread-dialog">
           <img src="@assets/images/Course/Chapter/dialog.png" alt="dialog" />
         </div>
-        <div v-if="showItem === 2" class="longread-test" @click="goToDialog()">
-          <img src="@assets/images/Course/Chapter/TestTODO_DELETE.png" alt="TestTODO_DELETE" />
+        <div v-if="showItem === 2" class="longread-test">
+          <Test
+            @goToDialog="goToDialog"
+          />
         </div>
         <div v-if="showItem >= 3 && showItem <= 5" class="longread-dialog">
           <img src="@assets/images/Course/Chapter/dialog2.png" alt="dialog" />
@@ -126,8 +128,13 @@
 </template>
 
 <script>
+import Test from '@/components/Test/Test';
+
 export default {
   name: 'ChapterLongread',
+  components: {
+    Test
+  },
   data: () => ({
     showItem: 0
   }),
@@ -224,7 +231,7 @@ export default {
   }
 
   &-test {
-    margin: 0 20px;
+    margin: 20px 0;
     margin-top: 15px;
 
     img[alt='TestTODO_DELETE'] {
@@ -235,7 +242,7 @@ export default {
   &-nextbtn {
     margin-top: -150px;
 
-    padding-bottom: 50px;
+    padding-bottom: 80px;
     .button {
       margin-top: 10px;
     }
@@ -290,7 +297,7 @@ export default {
     flex-direction: column;
     align-items: center;
     margin-top: -210px;
-    padding-bottom: 50px;
+    padding-bottom: 85px;
 
     .wrapper {
       display: flex;

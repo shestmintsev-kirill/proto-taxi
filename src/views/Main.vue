@@ -39,9 +39,6 @@ export default {
 .main-wrapper {
   min-height: 100vh;
   background-color: #f3f3f3;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
 }
 
 .main-content {

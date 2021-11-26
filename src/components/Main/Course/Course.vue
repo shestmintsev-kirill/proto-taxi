@@ -1,63 +1,77 @@
 <template>
   <div class="course">
-    <div class="modal description-wrapper">
-      <p class="course-description">
-        Раздел Русского языка посвящён темам, которые связаны с навыками общения с пассажарами, сотрудниками
-        ДПС и решению возможных конфликтных ситуаций.
-      </p>
-    </div>
-    <div>
-      <div v-for="(chapter, i) in chapters" :key="i" class="modal progress-wrapper">
-        <div
-          class="course-progress"
-          :style="{
-            'max-height': chapter.expand ? '900px' : '70px'
-          }"
-        >
-          <div class="course-progress__head" @click="chapter.expand = !chapter.expand">
-            <div class="wrapper">
-              <vue-ellipse-progress
-                :progress="calculateProgress(chapter)"
-                :determinate="false"
-                color="#232323"
-                empty-color="#fff"
-                :empty-color-fill="calculateProgress(chapter) ? '#fabd39' : '#fff'"
-                :size="32"
-                :thickness="1"
-                :empty-thickness="1"
-                lineMode="normal"
-                :legend="false"
-                animation="rs 700 400"
-                fontSize="1.5rem"
-                :loading="false"
-              >
-                <div slot="legend-caption">
-                  <span> {{ calculateProgress(chapter) }}% </span>
-                </div>
-              </vue-ellipse-progress>
-              <div class="title">{{ chapter.title }}</div>
+    <div v-if="!showCourse">
+      <div class="modal description-wrapper">
+        <p class="course-description">
+          Раздел Русского языка посвящён темам, которые связаны с навыками общения с пассажарами, сотрудниками
+          ДПС и решению возможных конфликтных ситуаций.
+        </p>
+      </div>
+      <div>
+        <div v-for="(chapter, i) in chapters" :key="i" class="modal progress-wrapper">
+          <div
+            class="course-progress"
+            :style="{
+              'max-height': chapter.expand ? '900px' : '70px'
+            }"
+          >
+            <div class="course-progress__head" @click="chapter.expand = !chapter.expand">
+              <div class="wrapper">
+                <vue-ellipse-progress
+                  :progress="calculateProgress(chapter)"
+                  :determinate="false"
+                  color="#232323"
+                  empty-color="#fff"
+                  :empty-color-fill="calculateProgress(chapter) ? '#fabd39' : '#fff'"
+                  :size="32"
+                  :thickness="1"
+                  :empty-thickness="1"
+                  lineMode="normal"
+                  :legend="false"
+                  animation="rs 700 400"
+                  fontSize="1.5rem"
+                  :loading="false"
+                >
+                  <div slot="legend-caption">
+                    <span> {{ calculateProgress(chapter) }}% </span>
+                  </div>
+                </vue-ellipse-progress>
+                <div class="title">{{ chapter.title }}</div>
+              </div>
+              <img
+                src="@/assets/images/Course/expand.svg"
+                alt="expand"
+                :style="{ transform: chapter.expand ? 'scaleY(-1)' : '' }"
+              />
             </div>
-            <img
-              src="@/assets/images/Course/expand.svg"
-              alt="expand"
-              :style="{ transform: chapter.expand ? 'scaleY(-1)' : '' }"
-            />
-          </div>
-          <div class="track-wrapper">
-            <div v-for="(subChapter, i) in chapter.subChapters" :key="i" class="course-progress__track">
-              <img :src="getImageStatusCourse(subChapter)" alt="statusCourse" />
-              <div class="name">{{ subChapter.title }}</div>
+            <div class="track-wrapper">
+              <div v-for="(subChapter, i) in chapter.subChapters" :key="i" class="course-progress__track">
+                <img :src="getImageStatusCourse(subChapter)" alt="statusCourse" />
+                <div class="name">{{ subChapter.title }}</div>
+              </div>
             </div>
-          </div>
-          <router-link
+            <!-- <router-link
             class="course-progress__btn button"
             :to="{ name: 'StartChapter', query: $route.query }"
           >
             {{ calculateProgress(chapter) ? 'Продолжить' : 'Начать' }}
-          </router-link>
+          </router-link> -->
+            <button class="course-progress__btn button" @click="showCourse = true">
+              {{ calculateProgress(chapter) ? 'Продолжить' : 'Начать' }}
+            </button>
+          </div>
         </div>
       </div>
     </div>
+    <iframe
+      v-if="showCourse"
+      class="iframe"
+      src="./xapidemo/content/index.html"
+      width="100%"
+      height="100%"
+      frameborder="0"
+      scrolling="auto"
+    />
   </div>
 </template>
 
@@ -67,7 +81,8 @@ import points from '@/components/Main/Track/points';
 export default {
   name: 'Course',
   data: () => ({
-    chapters: []
+    chapters: [],
+    showCourse: false
   }),
   mounted() {
     this.getChapters();
@@ -104,6 +119,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .course {
   .description-wrapper {
     padding: 20px 25px;

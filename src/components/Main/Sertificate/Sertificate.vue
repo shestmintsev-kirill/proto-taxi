@@ -2,13 +2,13 @@
   <div>
     <div class="modal">
       <div class="sertificate">Сертификаты</div>
-    </div>
+    </div>    
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Sertificate'
+  name: 'Sertificate',
 };
 </script>
 
