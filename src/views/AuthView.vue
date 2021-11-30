@@ -12,11 +12,15 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .auth-wrapper {
   min-height: 100vh;
   min-width: 100vw;
   background-color: #f3f3f3;
   padding-top: 40%;
+
+  @include for-size(sm) {
+    padding-top: 50px;
+  }
 }
 </style>

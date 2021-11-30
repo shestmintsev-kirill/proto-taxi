@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 @import './Reset.scss';
+@import './media.scss';
 
 * {
   font-family: 'Roboto', sans-serif;
@@ -17,14 +18,9 @@
 
 .blur-modal {
   margin: 0 20px;
-  background: linear-gradient(
-      157.27deg,
-      rgba(255, 255, 255, 0.06) -3.22%,
-      rgba(255, 255, 255, 0) 99.02%
-    ),
+  background: linear-gradient(157.27deg, rgba(255, 255, 255, 0.06) -3.22%, rgba(255, 255, 255, 0) 99.02%),
     rgba(255, 255, 255, 0.2);
-  box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.6),
-    inset 0px -2px 35px rgba(255, 255, 255, 0.3);
+  box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.6), inset 0px -2px 35px rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(32px);
   border-radius: 30px;
 }

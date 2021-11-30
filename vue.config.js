@@ -9,7 +9,6 @@ function resolve(dir) {
 }
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/proto-taxi/' : '/',
   configureWebpack: {
     context: resolve(''),
     devServer: {
@@ -34,14 +33,10 @@ module.exports = {
         '@assets': resolve('src/assets'),
         images: resolve('src/assets/images'),
         '@components': resolve('src/components'),
-        '@global': resolve('src/global'),
-        '@plugins': resolve('src/plugins'),
         '@router': resolve('src/router'),
         '@store': resolve('src/store'),
-        '@styles': resolve('src/styles'),
-        '@views': resolve('src/views'),
-        '@client': resolve('src/client'),
-        '@admin': resolve('src/admin')
+        '@style': resolve('src/assets/style'),
+        '@views': resolve('src/views')
       }
     },
     plugins: [
