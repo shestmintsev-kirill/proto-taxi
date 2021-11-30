@@ -4,13 +4,13 @@ import Main from '@/views/Main.vue';
 import Home from '@/components/Main/Home/Home.vue';
 import Track from '@/components/Main/Track/Track.vue';
 import Sertificate from '@/components/Main/Sertificate/Sertificate.vue';
-import forgotPassword from '@/components/LoginPassword/ForgotPassword.vue';
+import forgotPassword from '@/components/Login/ForgotPassword.vue';
 import Error from '@/views/Error.vue';
 import Course from '@/components/Main/Course/Course.vue';
 import ChapterCourse from '@/components/Main/Course/ChapterCourse.vue';
 import StartChapter from '@/components/Main/Course/StartChapter.vue';
 import ChapterLongread from '@/components/Main/Course/ChapterLongread.vue';
-import Login from '@/components/LoginPassword/Login.vue';
+import Login from '@/components/Login/Login.vue';
 import AuthView from '@/views/AuthView.vue';
 
 Vue.use(VueRouter);

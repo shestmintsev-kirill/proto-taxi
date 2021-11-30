@@ -36,7 +36,7 @@
         @click="goToCourse(point)"
       />
     </div>
-    <TheModal :show="isShowModal" maxWidth="650" @close-modal="isShowModal = false">
+    <TheModal :show="isShowModal" maxWidth="650">
       <LessonStarted @close-modal="isShowModal = false" />
     </TheModal>
   </div>
@@ -65,8 +65,8 @@ export default {
       return points;
     },
     lastCurrentCourseId() {
-      if (localStorage.startCourse) {
-        return JSON.parse(localStorage.startCourse).id;
+      if (sessionStorage.startCourse) {
+        return JSON.parse(sessionStorage.startCourse).id;
       }
       return null;
     }
@@ -77,10 +77,11 @@ export default {
   },
   methods: {
     goToCourse(point) {
-      localStorage.startCourse = JSON.stringify({
+      sessionStorage.startCourse = JSON.stringify({
         id: point.id,
         name: point.name
       });
+      sessionStorage.goToMissedCourse = true;
       this.$router.push({
         name: 'course',
         params: { id: point.id },
@@ -92,9 +93,9 @@ export default {
       document.documentElement.scrollTop = document.documentElement.scrollHeight;
     },
     checkedStartCourse() {
-      if (localStorage.startCourse && !localStorage.firstLogin) {
+      if (sessionStorage.startCourse && !sessionStorage.goToMissedCourse) {
         setTimeout(() => {
-          this.startCourse = localStorage.startCourse;
+          this.startCourse = sessionStorage.startCourse;
           this.isShowModal = true;
         }, 500);
       }

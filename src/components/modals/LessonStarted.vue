@@ -25,7 +25,7 @@ export default {
     }
   },
   mounted() {
-    localStorage.firstLogin = true;
+    sessionStorage.goToMissedCourse = true;
     document.body.style.overflow = 'hidden';
   },
   beforeDestroy() {
@@ -36,7 +36,7 @@ export default {
       this.$emit('close-modal');
     },
     goToStartedSourse() {
-      let point = JSON.parse(localStorage.startCourse);
+      let point = JSON.parse(sessionStorage.startCourse);
       this.$router.push({
         name: 'course',
         params: { id: point.id },

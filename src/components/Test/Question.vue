@@ -1,9 +1,6 @@
 <template>
   <div class="wrap__question">
-    <div
-      v-if="type !== 'checkbox'"
-      class="question__answers-radio"
-    >
+    <div v-if="type !== 'checkbox'" class="question__answers-radio">
       <div
         v-for="{ text, id, correct, feedback } in currentAnswers"
         :key="id"
@@ -27,19 +24,11 @@
       >
         Проверить
       </BaseButton>
-      <BaseButton
-        v-if="isAnswerReactionShown"
-        :disabled="isButtonEnabled"
-        class="button"
-        @click="goTo"
-      >
+      <BaseButton v-if="isAnswerReactionShown" :disabled="isButtonEnabled" class="button" @click="goTo">
         Далее
       </BaseButton>
     </div>
-    <div
-      v-else
-      class="question__answers-checkbox"
-    >
+    <div v-else class="question__answers-checkbox">
       <div
         v-for="{ text, id, correct, feedback } in currentAnswers"
         :key="id"
@@ -54,14 +43,11 @@
         <input
           v-model="selectedAnswers"
           :id="text"
-          type="checkbox" 
-          :value="{id: id, correct: correct}"
+          type="checkbox"
+          :value="{ id: id, correct: correct }"
           class="input_checkbox"
         />
-        <label
-          :for="text"
-          v-html="text"
-        />
+        <label :for="text" v-html="text" />
         <p v-show="showFeedback" class="question__answer-feedback" v-html="feedback" />
       </div>
       <BaseButton
@@ -72,21 +58,18 @@
       >
         Проверить
       </BaseButton>
-      <BaseButton
-        v-if="isAnswerReactionShown"
-        :disabled="isButtonEnabled"
-        class="button"
-        @click="goTo"
-      >
+      <BaseButton v-if="isAnswerReactionShown" :disabled="isButtonEnabled" class="button" @click="goTo">
         Далее
       </BaseButton>
     </div>
   </div>
 </template>
 <script>
+import BaseButton from '../global/BaseButton.vue';
 
 export default {
   name: 'Question',
+  components: { BaseButton },
   props: {
     currentAnswers: {
       type: Array,
@@ -122,8 +105,7 @@ export default {
       this.chooseAnswer();
     }
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     goTo(event) {
       this.$emit('goToDialog', event);
@@ -137,7 +119,7 @@ export default {
     },
     checkAnswer() {
       this.isAnswerReactionShown = true;
-      let result = this.selectedAnswers.find(check => check === true ) ? 'Верно' : 'Не верно';
+      let result = this.selectedAnswers.find(check => check === true) ? 'Верно' : 'Не верно';
       this.showFeedback = true;
       return result;
     },
@@ -146,7 +128,7 @@ export default {
         const currentAnswer = this.currentAnswers.find(answer => answer.id === id);
         return currentAnswer.correct ? 'question__answer--right' : 'question__answer--wrong';
       }
-    },
+    }
   }
 };
 </script>
@@ -161,28 +143,27 @@ export default {
   opacity: 0;
 }
 
-.input_checkbox+label {
+.input_checkbox + label {
   display: inline-flex;
   align-items: center;
   user-select: none;
 }
 
-.input_checkbox+label::before {
+.input_checkbox + label::before {
   content: '';
   display: inline-block;
   width: 25px;
   height: 25px;
   flex-shrink: 0;
   flex-grow: 0;
-  border: 2px solid #4C5CED;
+  border: 2px solid #4c5ced;
   border-radius: 5px;
   margin-right: 15px;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50% 50%;
-
 }
-.input_checkbox:checked+label::before {
+.input_checkbox:checked + label::before {
   background-image: url('~images/test/mim-selected.svg');
 }
 
@@ -191,8 +172,8 @@ export default {
     font-weight: 400;
     font-size: 18px;
     line-height: 32px;
-  }  
-  
+  }
+
   &__answer {
     padding: 0 11px;
     &:not(:last-child) {
@@ -224,7 +205,7 @@ export default {
     &-feedback {
       margin-top: 5px;
       font-size: 14px;
-      line-height: 16,41px;
+      line-height: 16, 41px;
       font-weight: 300;
     }
 
@@ -241,9 +222,10 @@ export default {
 
     &.question__answer--right {
       padding: 15px 11px 20px;
-      border: 2px solid #4DDE08;;
+      border: 2px solid #4dde08;
       border-radius: 5px;
-      label, .question__answer-text {
+      label,
+      .question__answer-text {
         &::before {
           border: none;
           background-size: 70%;
@@ -257,9 +239,10 @@ export default {
 
     &.question__answer--wrong {
       padding: 15px 11px 20px;
-      border: 2px solid #FF6954;
+      border: 2px solid #ff6954;
       border-radius: 5px;
-      label, .question__answer-text {
+      label,
+      .question__answer-text {
         &::before {
           border: none;
           background-size: 70%;
@@ -276,5 +259,4 @@ export default {
 .button {
   margin-top: 20px;
 }
-
 </style>

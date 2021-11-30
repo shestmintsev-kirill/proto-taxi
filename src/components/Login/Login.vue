@@ -37,15 +37,19 @@ export default {
     confirmLogin: false
   }),
   mounted() {
-    if (localStorage.isLogin) {
+    if (sessionStorage.isLogin) {
       this.$router.push('/track');
     }
   },
   methods: {
     setLogin() {
       if (this.login === 'user@example.com' && this.password === '123') {
-        localStorage.isLogin = true;
-        this.$router.push('/track');
+        sessionStorage.isLogin = true;
+        if (!sessionStorage.firstLogin) {
+          this.$router.push('/home');
+        } else {
+          this.$router.push('/track');
+        }
       }
       this.confirmLogin = true;
     },

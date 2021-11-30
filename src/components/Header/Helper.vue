@@ -11,18 +11,39 @@
         top: `${helpInfo.modalTop}px`,
         left: `${helpInfo.modalLeft}px`
       }"
-      @click="closeModal"
+      @click="closeHelper()"
     />
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+import { HELP_MODAL } from './HelpModal';
+
 export default {
   name: 'Helper',
   props: {
-    helpInfo: {
-      type: Object,
-      default: () => ({})
+    tabs: {
+      type: Array,
+      default: () => [],
+      required: true
+    }
+  },
+  computed: {
+    activeTabType() {
+      return this.$route.fullPath.split('/');
+    },
+    helpInfo() {
+      const objInfo = {};
+      if (this.activeTabType.length === 2) {
+        const nameRoute = HELP_MODAL[this.tabs.find(t => t.type === this.activeTabType[1]).type];
+        if (!nameRoute) return;
+        const { text, top, left } = nameRoute;
+        objInfo.modalText = text;
+        objInfo.modalTop = top;
+        objInfo.modalLeft = left;
+      }
+      return objInfo;
     }
   },
   mounted() {
@@ -33,8 +54,14 @@ export default {
     document.body.style.overflow = null;
   },
   methods: {
-    closeModal() {
-      this.$emit('close-modal');
+    ...mapActions('helper', ['setStateHelper']),
+    closeHelper() {
+      if (!sessionStorage.firstLogin && this.$route.fullPath !== '/track') {
+        sessionStorage.firstLogin = true;
+        this.$router.push('/track');
+      } else {
+        this.setStateHelper(false);
+      }
     }
   }
 };

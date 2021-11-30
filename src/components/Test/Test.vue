@@ -2,17 +2,13 @@
   <div class="test blur-modal">
     <div class="test__wrapper">
       <div class="test__question" v-html="text" />
-      <Questions
-        :currentAnswers="currentAnswers"
-        :type="type"
-        @goToDialog="goToDialog"
-      />
+      <Questions :currentAnswers="currentAnswers" :type="type" @goToDialog="goToDialog" />
     </div>
   </div>
 </template>
 
 <script>
-import  Questions  from './Question.vue';
+import Questions from './Question.vue';
 
 export default {
   name: 'Test',
@@ -60,31 +56,30 @@ export default {
           id: 5,
           text: 'Измените адрес в приложении, пожалуйста.',
           correct: true,
-          feedback: 'Пассажир уже написал адрес в приложении. Пока не говорил о смене адреса, такая просьба неуместна.'
+          feedback:
+            'Пассажир уже написал адрес в приложении. Пока не говорил о смене адреса, такая просьба неуместна.'
         },
         {
           id: 6,
           text: 'Вы должны проверить адрес.',
           correct: false,
-          feedback: 'Лучше, если вы сами проверите адрес – ведь у вас под рукой навигатор, а у пассажира может не быть такой возможности.'
+          feedback:
+            'Лучше, если вы сами проверите адрес – ведь у вас под рукой навигатор, а у пассажира может не быть такой возможности.'
         }
       ]
     };
   },
-  computed: {
-  },
+  computed: {},
   methods: {
     goToDialog(event) {
       this.$emit('goToDialog', event);
     }
   }
 };
-
 </script>
 
 <style lang="scss" scoped>
 @import '@/assets/style/style.scss';
-
 
 .test {
   &__wrapper {
@@ -99,5 +94,4 @@ export default {
 .blur-modal {
   padding: 0;
 }
-
 </style>

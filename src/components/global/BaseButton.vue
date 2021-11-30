@@ -1,6 +1,6 @@
 <template>
   <div :class="['button', buttonClasses]" @click="handleClick">
-    <span class='button__content'>
+    <span class="button__content">
       <slot />
     </span>
   </div>
@@ -30,20 +30,17 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-
 .button {
-    background: #FABA2D;
-    opacity: 0.5;
-    color: #232323;
+  background: #faba2d;
+  opacity: 0.5;
+  color: #232323;
 
-    &--disabled {
-      opacity: 1;
-    }
+  &--disabled {
+    opacity: 1;
+  }
 
-    &__content {
-      position: relative;
-    }
-
+  &__content {
+    position: relative;
+  }
 }
-
 </style>

@@ -18,9 +18,7 @@
           <img src="@assets/images/Course/Chapter/dialog.png" alt="dialog" />
         </div>
         <div v-if="showItem === 2" class="longread-test">
-          <Test
-            @goToDialog="goToDialog"
-          />
+          <Test @goToDialog="goToDialog" />
         </div>
         <div v-if="showItem >= 3 && showItem <= 5" class="longread-dialog">
           <img src="@assets/images/Course/Chapter/dialog2.png" alt="dialog" />

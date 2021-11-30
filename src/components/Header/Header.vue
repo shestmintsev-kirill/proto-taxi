@@ -19,51 +19,34 @@
           class="header-question__image"
           src="@/assets/images/Header/question.svg"
           alt="question"
-          @click="isShowAccount = activeTabType.length === 2 ? true : false"
+          @click="activeTabType.length === 2 ? setStateHelper(true) : setStateHelper(false)"
         />
       </div>
     </div>
-    <Helper v-if="isShowAccount" :helpInfo="helpInfo" @close-modal="isShowAccount = false" />
   </header>
 </template>
 
 <script>
-import Helper from './Helper';
-import { HELP_MODAL } from './HelpModal.js';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Header',
-  components: {
-    Helper
-  },
   props: {
     tabs: {
       type: Array,
       default: () => []
     }
   },
-  data: () => ({
-    isShowAccount: false
-  }),
   computed: {
     activeTabType() {
       return this.$route.fullPath.split('/');
     },
     headerTitle() {
       return this.tabs.find(t => t.type === this.activeTabType[1]).title;
-    },
-    helpInfo() {
-      const objInfo = {};
-      if (this.activeTabType.length === 2) {
-        const nameRoute = HELP_MODAL[this.tabs.find(t => t.type === this.activeTabType[1]).type];
-        if (!nameRoute) return;
-        const { text, top, left } = nameRoute;
-        objInfo.modalText = text;
-        objInfo.modalTop = top;
-        objInfo.modalLeft = left;
-      }
-      return objInfo;
     }
+  },
+  methods: {
+    ...mapActions('helper', ['setStateHelper'])
   }
 };
 </script>

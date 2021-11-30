@@ -24,7 +24,7 @@
           <p class="user-info__name">Иван Макаров</p>
           <p class="user-info__id">ID водителя</p>
         </div>
-        <div v-for="(menu, index) in userManu" :key="index" class="user-menu">
+        <div v-for="(menu, index) in getUserMenu" :key="index" class="user-menu">
           <div class="user-menu__item">
             <p class="title">{{ menu }}</p>
             <img src="@/assets/images/Home/arrow.svg" alt="arrow" />
@@ -40,15 +40,12 @@
 
 <script>
 import points from '@/components/Main/Track/points';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'Home',
-  data() {
-    return {
-      userManu: ['Аккаунт КисАрт', 'Пароль', 'Прогресс']
-    };
-  },
   computed: {
+    ...mapGetters('profile', ['getUserMenu']),
     calculateAllProgress() {
       let subChapters = points.map(p => {
         return p.chapters.map(c => {
@@ -71,11 +68,17 @@ export default {
       return Math.ceil(middleValue.reduce((acc, value) => acc + value) / middleValue.length);
     }
   },
+  mounted() {
+    if (!sessionStorage.firstLogin) {
+      this.setStateHelper(true);
+    }
+  },
   methods: {
+    ...mapActions('helper', ['setStateHelper']),
     exit() {
-      localStorage.removeItem('firstLogin');
-      localStorage.removeItem('isLogin');
-      // this.$router.push('/auth');
+      sessionStorage.removeItem('isLogin');
+      sessionStorage.removeItem('goToMissedCourse');
+      this.$router.push('/auth');
     }
   }
 };
