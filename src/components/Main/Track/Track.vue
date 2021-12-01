@@ -24,15 +24,15 @@
       />
 
       <img
-        v-for="point in points"
+        v-for="(point, index) in getPoints"
         :key="point.name"
-        :src="require(`@/assets/images/Track/TrackCourseTabs/${point.tabImgSrc}.svg`)"
+        :src="require(`@/assets/images/Track/TrackCourseTabs/${pointsPosition[index].tabImgSrc}.svg`)"
         alt="point"
         class="track-point"
         :class="{
           'track-current-point': point.id === lastCurrentCourseId
         }"
-        :style="{ top: point.position.top, left: point.position.left }"
+        :style="{ top: pointsPosition[index].position.top, left: pointsPosition[index].position.left }"
         @click="goToCourse(point)"
       />
     </div>
@@ -46,7 +46,8 @@
 import TheModal from '@/components/modals/TheModal';
 import LessonStarted from '@/components/modals/LessonStarted';
 import animationSvg from './animationSvg';
-import points from './points';
+import pointsPosition from './pointsPosition';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'Track',
@@ -58,11 +59,12 @@ export default {
     isShowModal: false
   }),
   computed: {
+    ...mapGetters('track', ['getPoints']),
     images() {
       return animationSvg;
     },
-    points() {
-      return points;
+    pointsPosition() {
+      return pointsPosition;
     },
     lastCurrentCourseId() {
       if (sessionStorage.startCourse) {
@@ -81,12 +83,12 @@ export default {
         id: point.id,
         name: point.name
       });
-      sessionStorage.goToMissedCourse = true;
       this.$router.push({
         name: 'course',
         params: { id: point.id },
         query: { n: point.name }
       });
+      sessionStorage.goToMissedCourse = true;
     },
     startCoursePosition() {
       this.$refs.wrapper.scrollLeft = 110;

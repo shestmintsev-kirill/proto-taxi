@@ -9,7 +9,10 @@
 export default {
   name: 'BaseButton',
   props: {
-    disabled: Boolean
+    disabled: {
+      type: Boolean,
+      required: true
+    }
   },
   computed: {
     buttonClasses() {

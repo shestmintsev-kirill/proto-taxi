@@ -1,6 +1,6 @@
 <template>
   <div class="course">
-    <div v-if="!showCourse">
+    <div v-if="!$route.query.show">
       <div class="modal description-wrapper">
         <p class="course-description">
           Раздел Русского языка посвящён темам, которые связаны с навыками общения с пассажарами, сотрудниками
@@ -56,7 +56,7 @@
           >
             {{ calculateProgress(chapter) ? 'Продолжить' : 'Начать' }}
           </router-link> -->
-            <button class="course-progress__btn button" @click="showCourse = true">
+            <button class="course-progress__btn button" @click="showXAPI()">
               {{ calculateProgress(chapter) ? 'Продолжить' : 'Начать' }}
             </button>
           </div>
@@ -64,7 +64,7 @@
       </div>
     </div>
     <iframe
-      v-if="showCourse"
+      v-if="$route.query.show"
       class="iframe"
       src="./xapidemo/content/index.html"
       width="100%"
@@ -76,18 +76,23 @@
 </template>
 
 <script>
-import points from '@/components/Main/Track/points';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'Course',
   data: () => ({
-    chapters: [],
-    showCourse: false
+    chapters: []
   }),
+  computed: {
+    ...mapGetters('track', ['getPoints'])
+  },
   mounted() {
     this.getChapters();
   },
   methods: {
+    showXAPI() {
+      this.$router.push({ query: { n: this.$route.query.n, show: this.$route.params.id } });
+    },
     getImageStatusCourse(subChapter) {
       if (subChapter.type === 'attestation') {
         return require('@/assets/images/Course/attestation.svg');
@@ -98,7 +103,7 @@ export default {
       }
     },
     getChapters() {
-      this.chapters = points
+      this.chapters = this.getPoints
         .filter(p => p.id === this.$route.params.id)
         .map(p => {
           return p.chapters.map((c, index) => {

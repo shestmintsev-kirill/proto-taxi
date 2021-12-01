@@ -10,7 +10,7 @@ export const HELP_MODAL = {
     left: 90
   },
   sertificate: {
-    text: 'Чтобы просмотреть сертификат нажмите ',
+    text: 'Чтобы просмотреть сертификат нажмите',
     top: 500,
     left: 140
   }

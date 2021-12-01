@@ -5,7 +5,7 @@
         <div class="user-info">
           <vue-ellipse-progress
             class="user-info__img"
-            :progress="calculateAllProgress"
+            :progress="getAllUserProgress"
             :determinate="false"
             color="#FABA2D"
             empty-color="#ECECEC"
@@ -39,42 +39,24 @@
 </template>
 
 <script>
-import points from '@/components/Main/Track/points';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'Home',
   computed: {
     ...mapGetters('profile', ['getUserMenu']),
-    calculateAllProgress() {
-      let subChapters = points.map(p => {
-        return p.chapters.map(c => {
-          return c.subChapters;
-        });
-      });
-
-      let subChaptersPropgress = subChapters.map(sc => {
-        return sc.map(c => {
-          let passedItems = c.filter(c => c.status === 'passed');
-          let progressCahpter = Math.floor((passedItems.length / c.length) * 100);
-          return progressCahpter;
-        });
-      });
-
-      let middleValue = subChaptersPropgress.map(sc => {
-        return sc.reduce((acc, value) => Math.ceil((acc + value) / sc.length));
-      });
-
-      return Math.ceil(middleValue.reduce((acc, value) => acc + value) / middleValue.length);
-    }
+    ...mapGetters('track', ['getAllUserProgress'])
   },
   mounted() {
     if (!sessionStorage.firstLogin) {
       this.setStateHelper(true);
     }
+
+    this.calculateAllProgress();
   },
   methods: {
     ...mapActions('helper', ['setStateHelper']),
+    ...mapActions('track', ['calculateAllProgress']),
     exit() {
       sessionStorage.removeItem('isLogin');
       sessionStorage.removeItem('goToMissedCourse');
