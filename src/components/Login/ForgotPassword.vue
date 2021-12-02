@@ -17,9 +17,15 @@
           Введите номер телефона для смены пароля и мы пришлём код для подтверждения:
         </div>
         <div class="modal__input">
-          <input v-model="telephone" type="tel" class="input" placeholder="Телефон" @input="acceptNumber" />
+          <input
+            v-model="telephone"
+            type="tel"
+            class="input"
+            placeholder="(555) 555-5555"
+            @input="acceptNumber()"
+          />
         </div>
-        <div class="button" @click="confirm">Подтвердить</div>
+        <button :disabled="telephone.length !== 14" class="button" @click="confirm">Подтвердить</button>
       </div>
     </div>
   </div>
@@ -35,7 +41,8 @@ export default {
   },
   methods: {
     confirm() {
-      console.log('confirm');
+      console.log(`confirm ${this.telephone}`);
+      this.telephone = '';
     },
     acceptNumber() {
       let x = this.telephone.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
@@ -100,6 +107,10 @@ export default {
   .button {
     margin-top: 40px;
     max-width: 400px;
+  }
+
+  .button[disabled] {
+    opacity: 0.5;
   }
 }
 
