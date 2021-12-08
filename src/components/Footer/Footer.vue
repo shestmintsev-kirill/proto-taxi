@@ -39,7 +39,6 @@ export default {
   height: 90px;
   background: #ffffff;
   box-shadow: inset 0px 2px 0px rgb(219, 225, 255);
-  border-radius: 30px 30px 0px 0px;
   padding: 10px 40px;
   z-index: 10;
 

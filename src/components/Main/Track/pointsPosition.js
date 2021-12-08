@@ -1,34 +1,34 @@
 const pointsPosition = [
   {
-    tabImgSrc: 'langRu',
+    // tabImgSrc: 'langRu',
     id: '1',
     position: {
-      top: '970px',
-      left: '190px'
+      top: '81%',
+      // left: '190px'
     }
   },
   {
-    tabImgSrc: 'pdd',
+    // tabImgSrc: 'pdd',
     id: '2',
     position: {
-      top: '720px',
-      left: '190px'
+      top: '60%',
+      // left: '190px'
     }
   },
   {
-    tabImgSrc: 'service',
+    // tabImgSrc: 'service',
     id: '3',
     position: {
-      top: '470px',
-      left: '190px'
+      top: '37%',
+      // left: '190px'
     }
   },
   {
-    tabImgSrc: 'MoscowScience',
+    // tabImgSrc: 'MoscowScience',
     id: '4',
     position: {
-      top: '200px',
-      left: '195px'
+      top: '17%',
+      // left: '195px'
     },
   }
 ];

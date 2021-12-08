@@ -1,12 +1,8 @@
 <template>
   <div ref="wrapper" class="track-wrapper">
-    <div
-      class="track"
-      :style="{
-        'background-image': `url(${require('@/assets/images/Track/emptyTrack.png')})`
-      }"
-    >
-      <img
+    <div class="track">
+      <img src="../../../assets/images/Track/emptyTrackBtn.png" alt="map" class="track-map" />
+      <!-- <img
         v-for="img in images"
         :key="img.id"
         class="anim scaleAnimation"
@@ -21,9 +17,9 @@
         }"
         :src="require(`@/assets/images/Track/trackSvg/${img.id}.svg`)"
         alt="animation"
-      />
+      /> -->
 
-      <img
+      <!-- <img
         v-for="(point, index) in getPoints"
         :key="point.name"
         :src="require(`@/assets/images/Track/TrackCourseTabs/${pointsPosition[index].tabImgSrc}.svg`)"
@@ -33,6 +29,13 @@
           'track-current-point': point.id === lastCurrentCourseId
         }"
         :style="{ top: pointsPosition[index].position.top, left: pointsPosition[index].position.left }"
+        @click="goToCourse(point)"
+      /> -->
+      <div
+        v-for="(point, index) in getPoints"
+        :key="point.name"
+        class="track-point"
+        :style="{ top: pointsPosition[index].position.top }"
         @click="goToCourse(point)"
       />
     </div>
@@ -91,7 +94,7 @@ export default {
       sessionStorage.goToMissedCourse = true;
     },
     startCoursePosition() {
-      this.$refs.wrapper.scrollLeft = 110;
+      // this.$refs.wrapper.scrollLeft = 110;
       document.documentElement.scrollTop = document.documentElement.scrollHeight;
     },
     checkedStartCourse() {
@@ -108,7 +111,8 @@ export default {
 
 <style lang="scss" scoped>
 .track-wrapper {
-  overflow: auto;
+  /* overflow: auto; */
+  /* width: 100vw; */
   margin-top: -65px;
   margin-bottom: -90px;
   background: #e5e5e5;
@@ -116,13 +120,19 @@ export default {
 
 .track {
   position: relative;
-  min-height: 100vh;
-  height: 1260px;
-  width: 600px;
+  /* min-height: 95vh;
+  min-width: 95vw; */
   overflow: hidden;
 
+  &-map {
+    width: 100%;
+  }
+
   &-point {
-    z-index: 3;
+    width: 100%;
+    height: 200px;
+    /* background: rgba($color: #000000, $alpha: 0.3); */
+    z-index: 0;
     position: absolute;
   }
 

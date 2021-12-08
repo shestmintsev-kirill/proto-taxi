@@ -4,7 +4,7 @@ export const track = {
     points: [
       {
         path: '/track',
-        name: 'Русский язык',
+        name: 'Говори грамотно',
         id: '1',
         chapters: [
           {
@@ -81,7 +81,7 @@ export const track = {
       },
       {
         path: '/track',
-        name: 'ПДД',
+        name: 'Води безопасно',
         id: '2',
         chapters: [
           {
@@ -158,7 +158,7 @@ export const track = {
       },
       {
         path: '/track',
-        name: 'Сервис',
+        name: 'Повышай рейтинг',
         id: '3',
         chapters: [
           {
@@ -235,7 +235,7 @@ export const track = {
       },
       {
         path: '/track',
-        name: 'Москвоведение',
+        name: 'Знай город',
         id: '4',
         chapters: [
           {

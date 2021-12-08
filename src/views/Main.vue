@@ -14,8 +14,8 @@
 <script>
 import Header from '@/components/Header/Header.vue';
 import Footer from '@/components/Footer/Footer.vue';
-import { mapGetters } from 'vuex';
 import Helper from '../components/Header/Helper.vue';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'Main',

@@ -8,8 +8,8 @@
     <div
       class="wrapper__cutout"
       :style="{
-        top: `${helpInfo.modalTop}px`,
-        left: `${helpInfo.modalLeft}px`
+        top: helpInfo.modalTop,
+        left: helpInfo.modalLeft
       }"
       @click="closeHelper()"
     />
@@ -69,7 +69,7 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
@@ -78,7 +78,7 @@ export default {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  z-index: 102;
+  z-index: 199;
 
   .modal {
     position: fixed;
@@ -92,10 +92,10 @@ export default {
   }
 
   &__cutout {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    z-index: 2;
+    position: fixed;
+    width: 150px;
+    height: 150px;
+    z-index: 99;
     border-radius: 50%;
     box-shadow: 0 0 0 100000px rgba(7, 9, 51, 0.6%);
   }
