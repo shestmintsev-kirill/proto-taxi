@@ -54,11 +54,14 @@ export default {
   },
   methods: {
     ...mapActions('helper', ['setStateHelper']),
-    async closeHelper() {
+    closeHelper() {
       if (!sessionStorage.firstLogin && this.$route.fullPath !== '/track') {
         sessionStorage.firstLogin = true;
-        await this.$router.push('/track');
-        this.setBottomPosition();
+        this.$router.push('/track');
+        this.setStateHelper(false);
+        setTimeout(() => {
+          this.setStateHelper(true);
+        }, 800);
       } else {
         this.setStateHelper(false);
       }
