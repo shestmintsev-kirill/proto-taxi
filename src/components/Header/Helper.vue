@@ -47,21 +47,25 @@ export default {
     }
   },
   mounted() {
-    document.documentElement.scrollTop = document.documentElement.scrollHeight;
-    document.body.style.overflow = 'hidden';
+    this.setBottomPosition();
   },
   beforeDestroy() {
     document.body.style.overflow = null;
   },
   methods: {
     ...mapActions('helper', ['setStateHelper']),
-    closeHelper() {
+    async closeHelper() {
       if (!sessionStorage.firstLogin && this.$route.fullPath !== '/track') {
         sessionStorage.firstLogin = true;
-        this.$router.push('/track');
+        await this.$router.push('/track');
+        this.setBottomPosition();
       } else {
         this.setStateHelper(false);
       }
+    },
+    setBottomPosition() {
+      document.documentElement.scrollTop = document.documentElement.scrollHeight;
+      document.body.style.overflow = 'hidden';
     }
   }
 };
