@@ -40,6 +40,10 @@ const routes = [
     component: Main,
     children: [
       {
+        path: '/back',
+        redirect: '/track'
+      },
+      {
         path: '/home',
         name: 'home',
         component: Home
@@ -78,7 +82,6 @@ const routes = [
       },
     ]
   },
-
   {
     path: '*',
     name: 'error',

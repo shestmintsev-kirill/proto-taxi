@@ -66,9 +66,8 @@
     <iframe
       v-if="$route.query.show"
       class="iframe"
-      src="./xapidemo/content/index.html"
+      :src="`/xapidemo${$route.query.show}/content/index.html`"
       width="100%"
-      height="100%"
       frameborder="0"
       scrolling="auto"
     />
@@ -91,7 +90,10 @@ export default {
   },
   methods: {
     showXAPI() {
-      this.$router.push({ query: { n: this.$route.query.n, show: this.$route.params.id } });
+      // TODO Костыль с 4 номером времменно, убрать!
+      this.$router.push({
+        query: { n: this.$route.query.n, show: this.$route.params.id === '4' ? '1' : this.$route.params.id }
+      });
     },
     getImageStatusCourse(subChapter) {
       if (subChapter.type === 'attestation') {
@@ -126,11 +128,14 @@ export default {
 <style lang="scss" scoped>
 .iframe {
   position: absolute;
-  top: 0;
+  top: 100px;
   left: 0;
+  height: calc(100% - 190px);
 }
 
 .course {
+  margin-bottom: 90px;
+
   .description-wrapper {
     padding: 20px 25px;
     margin-bottom: 20px;

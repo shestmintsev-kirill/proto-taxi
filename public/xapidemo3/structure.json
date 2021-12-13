@@ -1,0 +1,293 @@
+{
+  "id": "https://courseID.com/xapi/testPackage6",
+  "type": "course",
+  "component": "course",
+  "name": "демо",
+  "version": 1,
+  "items": [
+  {
+    "type": "video",
+    "id": "https://courseID.com/xapi/testPackage6/video1",
+    "parent": "https://courseID.com/xapi/testPackage6",
+    "name": "демо",
+    "type_name": "Видео",
+    "weight": 1,
+    "is_leaf": true,
+    "order": 0
+    },{
+      "type": "video",
+      "id": "https://courseID.com/xapi/testPackage6/video2",
+      "parent": "https://courseID.com/xapi/testPackage6",
+      "name": "демо",
+      "type_name": "Видео",
+      "weight": 1,
+      "is_leaf": true,
+      "order": 1
+    },{
+      "type": "test",
+      "id": "https://courseID.com/xapi/testPackage1/test1",
+      "parent": "https://courseID.com/xapi/testPackage1",
+      "name": "демо",
+      "type_name": "Тест",
+      "weight": 1,
+      "is_leaf": true,
+      "order": 2
+  }, {
+      "type": "question",
+      "id": "https://courseID.com/xapi/testPackage1/test1/question1",
+      "parent": "https://courseID.com/xapi/testPackage1",
+      "name": "демо",
+      "type_name": "Вопрос",
+      "weight": 1,
+      "is_leaf": true,
+      "order": 3
+  },{
+    "type": "test",
+    "id": "https://courseID.com/xapi/testPackage1/test2",
+    "parent": "https://courseID.com/xapi/testPackage1",
+    "name": "демо",
+    "type_name": "Тест",
+    "weight": 1,
+    "is_leaf": true,
+    "order": 4
+}, {
+    "type": "question",
+    "id": "https://courseID.com/xapi/testPackage1/test2/question1",
+    "parent": "https://courseID.com/xapi/testPackage1",
+    "name": "демо",
+    "type_name": "Вопрос",
+    "weight": 1,
+    "is_leaf": true,
+    "order": 5
+},{
+      "type": "video",
+      "id": "https://courseID.com/xapi/testPackage6/video3",
+      "parent": "https://courseID.com/xapi/testPackage6",
+    "name": "демо",
+    "type_name": "Видео",
+    "weight": 1,
+    "is_leaf": true,
+    "order": 6
+    },{
+      "type": "test",
+      "id": "https://courseID.com/xapi/testPackage1/test3",
+      "parent": "https://courseID.com/xapi/testPackage1",
+      "name": "демо",
+      "type_name": "Тест",
+      "weight": 1,
+      "is_leaf": true,
+      "order": 7
+  }, {
+      "type": "question",
+      "id": "https://courseID.com/xapi/testPackage1/test3/question1",
+      "parent": "https://courseID.com/xapi/testPackage1",
+      "name": "демо",
+      "type_name": "Вопрос",
+      "weight": 1,
+      "is_leaf": true,
+      "order": 8
+  },
+    
+    
+    
+    
+    
+    {
+      "type": "video",
+      "id": "https://courseID.com/xapi/testPackage6/video4",
+      "parent": "https://courseID.com/xapi/testPackage6",
+    "name": "демо",
+    "type_name": "Видео",
+    "weight": 1,
+    "is_leaf": true,
+    "order": 9
+    },
+    {
+      "type": "video",
+      "id": "https://courseID.com/xapi/testPackage6/video5",
+      "parent": "https://courseID.com/xapi/testPackage6",
+    "name": "демо",
+    "type_name": "Видео",
+    "weight": 1,
+    "is_leaf": true,
+    "order": 10
+    },
+    {
+      "type": "test",
+      "id": "https://courseID.com/xapi/testPackage1/test4",
+      "parent": "https://courseID.com/xapi/testPackage1",
+      "name": "демо",
+      "type_name": "Тест",
+      "weight": 1,
+      "is_leaf": true,
+      "order": 11
+  }, {
+      "type": "question",
+      "id": "https://courseID.com/xapi/testPackage1/test4/question1",
+      "parent": "https://courseID.com/xapi/testPackage1",
+      "name": "демо",
+      "type_name": "Вопрос",
+      "weight": 1,
+      "is_leaf": true,
+      "order": 12
+  },
+  {
+    "type": "test",
+    "id": "https://courseID.com/xapi/testPackage1/test5",
+    "parent": "https://courseID.com/xapi/testPackage1",
+    "name": "демо",
+    "type_name": "Тест",
+    "weight": 1,
+    "is_leaf": true,
+    "order": 13
+}, {
+    "type": "question",
+    "id": "https://courseID.com/xapi/testPackage1/test5/question1",
+    "parent": "https://courseID.com/xapi/testPackage1",
+    "name": "демо",
+    "type_name": "Вопрос",
+    "weight": 1,
+    "is_leaf": true,
+    "order": 14
+},
+    {
+      "type": "longread",
+      "id": "https://courseID.com/xapi/testPackage6/longread1",
+      "parent": "https://courseID.com/xapi/testPackage6",
+    "name": "демо",
+    "type_name": "Лонгрид",
+    "weight": 1,
+    "is_leaf": true,
+    "order": 15
+    },
+    {
+      "type": "longread",
+      "id": "https://courseID.com/xapi/testPackage6/longread2",
+      "parent": "https://courseID.com/xapi/testPackage6",
+    "name": "демо",
+    "type_name": "Лонгрид",
+    "weight": 1,
+    "is_leaf": true,
+    "order": 16
+    },
+    {
+      "type": "test",
+      "id": "https://courseID.com/xapi/testPackage1/test6",
+      "parent": "https://courseID.com/xapi/testPackage1",
+      "name": "демо",
+      "type_name": "Тест",
+      "weight": 1,
+      "is_leaf": true,
+      "order": 17
+  }, {
+      "type": "question",
+      "id": "https://courseID.com/xapi/testPackage1/test6/question1",
+      "parent": "https://courseID.com/xapi/testPackage1",
+      "name": "демо",
+      "type_name": "Вопрос",
+      "weight": 1,
+      "is_leaf": true,
+      "order": 18
+  },
+
+
+
+
+    {
+      "type": "video",
+      "id": "https://courseID.com/xapi/testPackage6/video6",
+      "parent": "https://courseID.com/xapi/testPackage6",
+    "name": "демо",
+    "type_name": "Видео",
+    "weight": 1,
+    "is_leaf": true,
+    "order": 19
+    },
+    {
+      "type": "test",
+      "id": "https://courseID.com/xapi/testPackage1/test7",
+      "parent": "https://courseID.com/xapi/testPackage1",
+      "name": "демо",
+      "type_name": "Тест",
+      "weight": 1,
+      "is_leaf": true,
+      "order": 20
+  }, {
+      "type": "question",
+      "id": "https://courseID.com/xapi/testPackage1/test7/question1",
+      "parent": "https://courseID.com/xapi/testPackage1",
+      "name": "демо",
+      "type_name": "Вопрос",
+      "weight": 1,
+      "is_leaf": true,
+      "order": 21
+  },
+  {
+    "type": "test",
+    "id": "https://courseID.com/xapi/testPackage1/test8",
+    "parent": "https://courseID.com/xapi/testPackage1",
+    "name": "демо",
+    "type_name": "Тест",
+    "weight": 1,
+    "is_leaf": true,
+    "order": 22
+}, {
+    "type": "question",
+    "id": "https://courseID.com/xapi/testPackage1/test8/question1",
+    "parent": "https://courseID.com/xapi/testPackage1",
+    "name": "демо",
+    "type_name": "Вопрос",
+    "weight": 1,
+    "is_leaf": true,
+    "order": 23
+},
+{
+  "type": "test",
+  "id": "https://courseID.com/xapi/testPackage1/test9",
+  "parent": "https://courseID.com/xapi/testPackage1",
+  "name": "демо",
+  "type_name": "Тест",
+  "weight": 1,
+  "is_leaf": true,
+  "order": 24
+}, {
+  "type": "question",
+  "id": "https://courseID.com/xapi/testPackage1/test9/question1",
+  "parent": "https://courseID.com/xapi/testPackage1",
+  "name": "демо",
+  "type_name": "Вопрос",
+  "weight": 1,
+  "is_leaf": true,
+  "order": 25
+},
+{
+  "type": "test",
+  "id": "https://courseID.com/xapi/testPackage1/test10",
+  "parent": "https://courseID.com/xapi/testPackage1",
+  "name": "демо",
+  "type_name": "Тест",
+  "weight": 1,
+  "is_leaf": true,
+  "order": 26
+}, {
+  "type": "question",
+  "id": "https://courseID.com/xapi/testPackage1/test10/question1",
+  "parent": "https://courseID.com/xapi/testPackage1",
+  "name": "демо",
+  "type_name": "Вопрос",
+  "weight": 1,
+  "is_leaf": true,
+  "order": 27
+},
+    {
+      "type": "longread",
+      "id": "https://courseID.com/xapi/testPackage6/longread3",
+      "parent": "https://courseID.com/xapi/testPackage6",
+    "name": "демо",
+    "type_name": "Лонгрид",
+    "weight": 1,
+    "is_leaf": true,
+    "order": 28
+    }
+  ]
+}
