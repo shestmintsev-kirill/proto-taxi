@@ -66,7 +66,7 @@
     <iframe
       v-if="$route.query.show"
       class="iframe"
-      :src="`/xapidemo${$route.query.show}/content/index.html`"
+      :src="`/proto-taxi/xapidemo${$route.query.show}/content/index.html`"
       width="100%"
       frameborder="0"
       scrolling="auto"
