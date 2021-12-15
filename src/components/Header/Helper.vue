@@ -17,8 +17,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
-import { HELP_MODAL } from './HelpModal';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'Helper',
@@ -30,15 +29,18 @@ export default {
     }
   },
   computed: {
+    ...mapGetters('helper', ['getHelperItems']),
     activeTabType() {
       return this.$route.fullPath.split('/');
+    },
+    nameRoute() {
+      return this.getHelperItems[this.tabs.find(t => t.type === this.activeTabType[1]).type];
     },
     helpInfo() {
       const objInfo = {};
       if (this.activeTabType.length === 2) {
-        const nameRoute = HELP_MODAL[this.tabs.find(t => t.type === this.activeTabType[1]).type];
-        if (!nameRoute) return;
-        const { text, top, left } = nameRoute;
+        if (!this.nameRoute) return;
+        const { text, top, left } = this.nameRoute;
         objInfo.modalText = text;
         objInfo.modalTop = top;
         objInfo.modalLeft = left;
@@ -55,11 +57,13 @@ export default {
   methods: {
     ...mapActions('helper', ['setStateHelper']),
     closeHelper() {
+      //показ хелперов при первой авторизации
       if (!sessionStorage.firstLogin && this.$route.fullPath !== '/track') {
         sessionStorage.firstLogin = true;
         this.$router.push('/track');
         this.setStateHelper(false);
         setTimeout(() => {
+          this.setBottomPosition();
           this.setStateHelper(true);
         }, 800);
       } else {
@@ -67,16 +71,26 @@ export default {
       }
     },
     setBottomPosition() {
-      document.documentElement.scrollTop = document.documentElement.scrollHeight;
-      document.body.style.overflow = 'hidden';
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth'
+      });
     }
+    //* Позиция help элемента
+    // async setHelpItemPosition() {
+    //   if (this.nameRoute.top.length) {
+    //     console.log(this.nameRoute.top.replace(/[a-zа-яё]/gi, ''));
+    //     document.documentElement.scrollTop = await this.nameRoute.top.replace(/[a-zа-яё]/gi, '');
+    //     document.body.style.overflow = 'hidden';
+    //   }
+    // }
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .wrapper {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   height: 100%;

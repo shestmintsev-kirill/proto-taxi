@@ -2,37 +2,9 @@
   <div ref="wrapper" class="track-wrapper">
     <div class="track">
       <img src="../../../assets/images/Track/emptyTrackBtn.png" alt="map" class="track-map" />
-      <!-- <img
-        v-for="img in images"
-        :key="img.id"
-        class="anim scaleAnimation"
-        :class="[
-          { scaleAnimation: img.id % 2 !== 0 },
-          { rotateAnimation: img.id % 2 === 0 },
-          `anim${img.id}`
-        ]"
-        :style="{
-          top: img.top,
-          left: img.left
-        }"
-        :src="require(`@/assets/images/Track/trackSvg/${img.id}.svg`)"
-        alt="animation"
-      /> -->
-
-      <!-- <img
-        v-for="(point, index) in getPoints"
-        :key="point.name"
-        :src="require(`@/assets/images/Track/TrackCourseTabs/${pointsPosition[index].tabImgSrc}.svg`)"
-        alt="point"
-        class="track-point"
-        :class="{
-          'track-current-point': point.id === lastCurrentCourseId
-        }"
-        :style="{ top: pointsPosition[index].position.top, left: pointsPosition[index].position.left }"
-        @click="goToCourse(point)"
-      /> -->
       <div
         v-for="(point, index) in getPoints"
+        ref="helperMark"
         :key="point.name"
         class="track-point"
         :style="{ top: pointsPosition[index].position.top }"
@@ -50,7 +22,7 @@ import TheModal from '@/components/modals/TheModal';
 import LessonStarted from '@/components/modals/LessonStarted';
 import animationSvg from './animationSvg';
 import pointsPosition from './pointsPosition';
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'Track',
@@ -76,11 +48,19 @@ export default {
       return null;
     }
   },
+  created() {
+    window.addEventListener('scroll', this.setPositionHelpItem);
+  },
   mounted() {
+    this.setPositionHelpItem();
     this.startCoursePosition();
     this.checkedStartCourse();
   },
+  destroyed() {
+    window.removeEventListener('scroll', this.setPositionHelpItem);
+  },
   methods: {
+    ...mapActions('helper', ['setHelperItems']),
     goToCourse(point) {
       sessionStorage.startCourse = JSON.stringify({
         id: point.id,
@@ -94,7 +74,6 @@ export default {
       sessionStorage.goToMissedCourse = true;
     },
     startCoursePosition() {
-      // this.$refs.wrapper.scrollLeft = 110;
       document.documentElement.scrollTop = document.documentElement.scrollHeight;
     },
     checkedStartCourse() {
@@ -104,6 +83,10 @@ export default {
           this.isShowModal = true;
         }, 500);
       }
+    },
+    setPositionHelpItem() {
+      const topPosition = ['track', this.$refs.helperMark[0].getBoundingClientRect().y + 'px'];
+      this.setHelperItems(topPosition);
     }
   }
 };

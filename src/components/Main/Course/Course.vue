@@ -87,6 +87,7 @@ export default {
   },
   mounted() {
     this.getChapters();
+    document.documentElement.scrollTop = 0;
   },
   methods: {
     showXAPI() {

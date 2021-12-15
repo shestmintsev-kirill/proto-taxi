@@ -25,7 +25,7 @@
           <p class="user-info__id">ID водителя</p>
         </div>
         <div v-for="(menu, index) in getUserMenu" :key="index" class="user-menu">
-          <div class="user-menu__item">
+          <div ref="helperMark" class="user-menu__item">
             <p class="title">{{ menu }}</p>
             <img src="@/assets/images/Home/arrow.svg" alt="arrow" />
           </div>
@@ -47,20 +47,33 @@ export default {
     ...mapGetters('profile', ['getUserMenu']),
     ...mapGetters('track', ['getAllUserProgress'])
   },
+  created() {
+    window.addEventListener('scroll', this.setPositionHelpItem);
+  },
   mounted() {
+    this.setPositionHelpItem();
     if (!sessionStorage.firstLogin) {
       this.setStateHelper(true);
     }
-
     this.calculateAllProgress();
   },
+  destroyed() {
+    window.removeEventListener('scroll', this.setPositionHelpItem);
+  },
   methods: {
-    ...mapActions('helper', ['setStateHelper']),
+    ...mapActions('helper', ['setStateHelper', 'setHelperItems']),
     ...mapActions('track', ['calculateAllProgress']),
     exit() {
       sessionStorage.removeItem('isLogin');
       sessionStorage.removeItem('goToMissedCourse');
       this.$router.push('/auth');
+    },
+    setPositionHelpItem() {
+      const topPosition = [
+        'home',
+        this.$refs.helperMark.filter(h => h.innerText === 'Прогресс')[0].getBoundingClientRect().y - 60 + 'px'
+      ];
+      this.setHelperItems(topPosition);
     }
   }
 };
