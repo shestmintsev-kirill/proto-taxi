@@ -75,6 +75,7 @@ export default {
         top: document.documentElement.scrollHeight,
         behavior: 'smooth'
       });
+      document.body.style.overflow = 'hidden';
     }
     //* Позиция help элемента
     // async setHelpItemPosition() {

@@ -71,7 +71,8 @@ export default {
     setPositionHelpItem() {
       const topPosition = [
         'home',
-        this.$refs.helperMark.filter(h => h.innerText === 'Прогресс')[0].getBoundingClientRect().y - 60 + 'px'
+        450 + 'px'
+        // this.$refs.helperMark.filter(h => h.innerText === 'Прогресс')[0].getBoundingClientRect().y + 'px'
       ];
       this.setHelperItems(topPosition);
     }
