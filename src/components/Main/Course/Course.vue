@@ -132,6 +132,7 @@ export default {
   top: 100px;
   left: 0;
   height: calc(100% - 190px);
+  height: calc(100vh - 190px);
 }
 
 .course {

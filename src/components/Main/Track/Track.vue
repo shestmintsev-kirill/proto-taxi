@@ -49,6 +49,7 @@ export default {
     }
   },
   created() {
+    console.log(this.$route);
     this.redirectToLastCourse();
     window.addEventListener('scroll', this.setPositionHelpItem);
   },
@@ -90,7 +91,7 @@ export default {
       this.setHelperItems(topPosition);
     },
     redirectToLastCourse() {
-      if (this.$route?.redirectedFrom === '/back') {
+      if (this.$route?.redirectedFrom === '/back/') {
         const { id, name } = JSON.parse(sessionStorage.startCourse);
         this.$router.push({
           name: 'course',
