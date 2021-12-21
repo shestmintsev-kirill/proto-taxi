@@ -49,6 +49,7 @@ export default {
     }
   },
   created() {
+    this.redirectToLastCourse();
     window.addEventListener('scroll', this.setPositionHelpItem);
   },
   mounted() {
@@ -87,6 +88,16 @@ export default {
     setPositionHelpItem() {
       const topPosition = ['track', this.$refs.helperMark[0].getBoundingClientRect().y + 'px'];
       this.setHelperItems(topPosition);
+    },
+    redirectToLastCourse() {
+      if (this.$route?.redirectedFrom === '/back') {
+        const { id, name } = JSON.parse(sessionStorage.startCourse);
+        this.$router.push({
+          name: 'course',
+          params: { id },
+          query: { n: name }
+        });
+      }
     }
   }
 };
@@ -114,7 +125,6 @@ export default {
   &-point {
     width: 100%;
     height: 200px;
-    /* background: rgba($color: #000000, $alpha: 0.3); */
     z-index: 0;
     position: absolute;
   }

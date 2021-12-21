@@ -135,7 +135,7 @@ export default {
 }
 
 .course {
-  margin-bottom: 90px;
+  /* margin-bottom: 90px; */
 
   .description-wrapper {
     padding: 20px 25px;
