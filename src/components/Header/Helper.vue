@@ -1,26 +1,34 @@
 <template>
-  <div class="wrapper">
-    <div class="modal">
-      <div class="wrapper__help">
-        {{ helpInfo.modalText }}
+  <div>
+    <div v-if="activeTabType.length === 2" class="wrapper">
+      <div class="modal">
+        <div class="wrapper__help" v-html="helpInfo.modalText" />
       </div>
+      <div
+        class="wrapper__cutout"
+        :style="{
+          top: helpInfo.modalTop,
+          left: helpInfo.modalLeft,
+          bottom: helpInfo.modalBottom
+        }"
+        @click="closeHelper()"
+      />
     </div>
-    <div
-      class="wrapper__cutout"
-      :style="{
-        top: helpInfo.modalTop,
-        left: helpInfo.modalLeft
-      }"
-      @click="closeHelper()"
+    <DefaultModal
+      v-if="activeTabType.length > 2"
+      :text="'В данный момент машина находится на плановом техобслуживании. Выйдет на линию в 2022 году.'"
+      @close-modal="setStateHelper(false)"
     />
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+import DefaultModal from '../modals/DefaultModal.vue';
 
 export default {
   name: 'Helper',
+  components: { DefaultModal },
   props: {
     tabs: {
       type: Array,
@@ -40,16 +48,25 @@ export default {
       const objInfo = {};
       if (this.activeTabType.length === 2) {
         if (!this.nameRoute) return;
-        const { text, top, left } = this.nameRoute;
+        const { text, top, bottom, left } = this.nameRoute;
         objInfo.modalText = text;
         objInfo.modalTop = top;
         objInfo.modalLeft = left;
+        objInfo.modalBottom = bottom;
       }
       return objInfo;
     }
   },
+  created() {
+    //!Костыль на скрытие хелпера на вкладке "Сертификаты"
+    if (this.activeTabType[1] === 'sertificate') {
+      this.setStateHelper(false);
+    }
+  },
   mounted() {
-    this.setBottomPosition();
+    if (this.activeTabType.length === 2) {
+      this.setBottomPosition();
+    }
   },
   beforeDestroy() {
     document.body.style.overflow = null;
@@ -59,13 +76,13 @@ export default {
     closeHelper() {
       //показ хелперов при первой авторизации
       if (!sessionStorage.firstLogin && this.$route.fullPath !== '/track') {
-        sessionStorage.firstLogin = true;
         this.$router.push('/track');
         this.setStateHelper(false);
         setTimeout(() => {
           this.setBottomPosition();
           this.setStateHelper(true);
         }, 800);
+        sessionStorage.firstLogin = true;
       } else {
         this.setStateHelper(false);
       }

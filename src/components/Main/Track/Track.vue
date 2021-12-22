@@ -20,7 +20,6 @@
 <script>
 import TheModal from '@/components/modals/TheModal';
 import LessonStarted from '@/components/modals/LessonStarted';
-import animationSvg from './animationSvg';
 import pointsPosition from './pointsPosition';
 import { mapActions, mapGetters } from 'vuex';
 
@@ -35,9 +34,6 @@ export default {
   }),
   computed: {
     ...mapGetters('track', ['getPoints']),
-    images() {
-      return animationSvg;
-    },
     pointsPosition() {
       return pointsPosition;
     },
@@ -46,10 +42,13 @@ export default {
         return JSON.parse(sessionStorage.startCourse).id;
       }
       return null;
+    },
+    nameFromRedirect() {
+      if (this.$route.redirectedFrom) return this.$route.redirectedFrom;
+      return '';
     }
   },
   created() {
-    console.log(this.$route);
     this.redirectToLastCourse();
     window.addEventListener('scroll', this.setPositionHelpItem);
   },
@@ -87,16 +86,27 @@ export default {
       }
     },
     setPositionHelpItem() {
-      const topPosition = ['track', this.$refs.helperMark[0].getBoundingClientRect().y + 'px'];
+      const topPosition = ['track', this.$refs.helperMark[0].getBoundingClientRect().y + 'px', null];
       this.setHelperItems(topPosition);
     },
     redirectToLastCourse() {
-      if (this.$route?.redirectedFrom === '/back/') {
+      if (this.nameFromRedirect.replaceAll('/', '') === 'back') {
+        if (sessionStorage.lastShowChapter === '1.4') sessionStorage.progress = '1';
+        if (sessionStorage.lastShowChapter === '2.1') sessionStorage.progress = '2';
         const { id, name } = JSON.parse(sessionStorage.startCourse);
         this.$router.push({
           name: 'course',
           params: { id },
           query: { n: name }
+        });
+      } else if (this.nameFromRedirect.replaceAll('/', '') === 'next') {
+        if (sessionStorage.lastShowChapter === '2.1') sessionStorage.progress = '2';
+        const { id, name } = JSON.parse(sessionStorage.startCourse);
+        const nextTincan = (Number(sessionStorage.lastShowChapter) + 0.1).toFixed(1);
+        this.$router.push({
+          name: 'course',
+          params: { id },
+          query: { n: name, show: nextTincan }
         });
       }
     }

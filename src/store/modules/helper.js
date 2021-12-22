@@ -2,33 +2,38 @@ export const helper = {
   namespaced: true,
   state: () => ({
     showHelper: false,
-    helperItems: [],
-    helperItems1: {
+    helperItems: {
       home: {
-        text: 'Вокруг аватара по мере прохождения курса будет отображаться ваш прогресс, чтобы посмотреть подробнее – нажмите кнопку «Прогресс».',
+        text: '<strong>Чтобы выбрать курс, нажмите на эту иконку</strong>',
         top: '',
-        left: '15px'
+        bottom: '5px',
+        left: ''
       },
       track: {
-        text: 'Чтобы начать занятие: нажмите на район «Говори грамотно».',
+        text: 'Чтобы начать обучение, нажмите на кнопку «Изучить».',
         top: '',
+        bottom: '',
         left: '50%'
       },
       sertificate: {
         text: 'Чтобы просмотреть сертификат нажмите',
-        top: '',
-        left: '140px'
+        top: '-33px',
+        bottom: '',
+        left: '260px'
       }
     }
   }),
   getters: {
-    getHelperItems: state => state.helperItems1,
+    getHelperItems: state => state.helperItems,
     isShowHelper: state => state.showHelper
   },
   mutations: {
     SET_HELPER_ITEMS(state, payload) {
-      const [name, topPosition] = payload;
-      state.helperItems1[name].top = topPosition;
+      const [name, topPosition, leftPosition] = payload;
+      state.helperItems[name].top = topPosition;
+      if (leftPosition) {
+        state.helperItems[name].left = leftPosition;
+      }
     },
     SET_SHOW_HELPER(state, payload) {
       state.showHelper = payload;

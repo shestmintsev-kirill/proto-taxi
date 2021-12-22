@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper" @click.self="closeModal">
     <div class="modal">
-      <div class="modal__title">Начатый урок</div>
+      <div class="modal__title">Едем дальше?</div>
       <div
         class="modal-icon__close"
         :style="{
@@ -9,7 +9,7 @@
         }"
         @click="closeModal"
       />
-      <div class="modal__text">Привет! У вас есть начатый урок, хотите продолжить?</div>
+      <div class="modal__text">Привет! У вас есть незавершенный урок. Хотите продолжить?</div>
       <div class="button" @click="goToStartedSourse()">Продолжить</div>
     </div>
   </div>

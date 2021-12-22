@@ -45,11 +45,7 @@ export default {
     setLogin() {
       if (this.login === 'user@example.com' && this.password === '123') {
         sessionStorage.isLogin = true;
-        if (!sessionStorage.firstLogin) {
-          this.$router.push('/home');
-        } else {
-          this.$router.push('/track');
-        }
+        this.$router.push('/welcome');
       }
       this.confirmLogin = true;
     },

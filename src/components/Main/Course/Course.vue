@@ -3,8 +3,9 @@
     <div v-if="!$route.query.show">
       <div class="modal description-wrapper">
         <p class="course-description">
-          Раздел Русского языка посвящён темам, которые связаны с навыками общения с пассажарами, сотрудниками
-          ДПС и решению возможных конфликтных ситуаций.
+          Раздел «Говори правильно» поможет вам развить навыки общения с пассажирами. После обучения вы
+          сможете лучше понимать клиентов и правильно доносить свои мысли.<br /><br />Готовы перейти на новый
+          уровень общения?
         </p>
       </div>
       <div>
@@ -36,7 +37,7 @@
                     <span> {{ calculateProgress(chapter) }}% </span>
                   </div>
                 </vue-ellipse-progress>
-                <div class="title">{{ chapter.title }}</div>
+                <div class="title">{{ chapter.expand ? chapter.title : sliceText(chapter.title) }}</div>
               </div>
               <img
                 src="@/assets/images/Course/expand.svg"
@@ -45,18 +46,17 @@
               />
             </div>
             <div class="track-wrapper">
-              <div v-for="(subChapter, i) in chapter.subChapters" :key="i" class="course-progress__track">
+              <div
+                v-for="(subChapter, i) in chapter.subChapters"
+                :key="i"
+                class="course-progress__track"
+                @click="showXAPI(`${chapter.id}.${i + 1}`, subChapter.status)"
+              >
                 <img :src="getImageStatusCourse(subChapter)" alt="statusCourse" />
-                <div class="name">{{ subChapter.title }}</div>
+                <div class="name">{{ sliceText(subChapter.title) }}</div>
               </div>
             </div>
-            <!-- <router-link
-            class="course-progress__btn button"
-            :to="{ name: 'StartChapter', query: $route.query }"
-          >
-            {{ calculateProgress(chapter) ? 'Продолжить' : 'Начать' }}
-          </router-link> -->
-            <button class="course-progress__btn button" @click="showXAPI()">
+            <button class="course-progress__btn button" @click="unlockNext()">
               {{ calculateProgress(chapter) ? 'Продолжить' : 'Начать' }}
             </button>
           </div>
@@ -71,38 +71,51 @@
       frameborder="0"
       scrolling="auto"
     />
+    <DefaultModal v-if="showDefaultModal" @close-modal="showDefaultModal = false" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import DefaultModal from '../../modals/DefaultModal.vue';
 
 export default {
   name: 'Course',
+  components: { DefaultModal },
   data: () => ({
-    chapters: []
+    chapters: [],
+    showDefaultModal: false
   }),
   computed: {
     ...mapGetters('track', ['getPoints'])
   },
   mounted() {
+    if (this.$route.query.show) {
+      sessionStorage.lastShowChapter = this.$route.query.show;
+    }
+    if (sessionStorage.progress === '1') this.unlockNext(1);
+    if (sessionStorage.progress === '2') this.unlockNext(2);
     this.getChapters();
     document.documentElement.scrollTop = 0;
   },
   methods: {
-    showXAPI() {
-      // TODO Костыль с 4 номером времменно, убрать!
+    showXAPI(xapi_index, status) {
+      if (this.$route.params.id !== '1') this.showDefaultModal = true;
+      if (status === 'close') return;
+      sessionStorage.lastShowChapter = xapi_index;
       this.$router.push({
-        query: { n: this.$route.query.n, show: this.$route.params.id === '4' ? '1' : this.$route.params.id }
+        query: { n: this.$route.query.n, show: xapi_index }
       });
     },
     getImageStatusCourse(subChapter) {
       if (subChapter.type === 'attestation') {
         return require('@/assets/images/Course/attestation.svg');
       } else if (subChapter.status === 'passed') {
-        return require('@/assets/images/Course/checkedCourse.svg');
+        return require('@/assets/images/Course/passedCourse.svg');
+      } else if (subChapter.status === 'close') {
+        return require('@/assets/images/Course/closedCourse.svg');
       } else if (subChapter.status === 'open') {
-        return require('@/assets/images/Course/dontCheckedCourse.svg');
+        return require('@/assets/images/Course/openCourse.svg');
       }
     },
     getChapters() {
@@ -121,6 +134,21 @@ export default {
     calculateProgress(chapter) {
       let passedSubChapters = chapter.subChapters.filter(s => s.status === 'passed');
       return Math.floor((passedSubChapters.length / chapter.subChapters.length) * 100);
+    },
+    unlockNext(step) {
+      if (step) this.getPoints[0].chapters[1].subChapters[0].status = 'open';
+      if (step === 2) {
+        this.getPoints[0].chapters[1].subChapters.forEach((chapter, index) => {
+          if (index === 0) chapter.status = 'passed';
+          if (index > 0 && index < 4) chapter.status = 'open';
+        });
+      }
+    },
+    sliceText(text) {
+      if (text.length > 18) {
+        return text.slice(0, 18) + '...';
+      }
+      return text;
     }
   }
 };

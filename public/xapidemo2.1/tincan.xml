@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <tincan xmlns="http://projecttincan.com/tincan.xsd">
+      <activities>
+        <activity id="https://courseID.com/xapi/testPackageIntro1" type="http://adlnet.gov/expapi/activities/course">
+          <name>Intro1</name>
+          <description lang="en-US">Intro1</description>
+          <launch lang="en-us">content/index.html</launch>
+        </activity>
+      </activities>
+    </tincan>

@@ -19,7 +19,7 @@
           class="header-question__image"
           src="@/assets/images/Header/question.svg"
           alt="question"
-          @click="activeTabType.length === 2 ? setStateHelper(true) : setStateHelper(false)"
+          @click="setStateHelper(true)"
         />
       </div>
     </div>

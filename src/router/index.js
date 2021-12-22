@@ -7,11 +7,9 @@ import Sertificate from '@/components/Main/Sertificate/Sertificate.vue';
 import forgotPassword from '@/components/Login/ForgotPassword.vue';
 import Error from '@/views/Error.vue';
 import Course from '@/components/Main/Course/Course.vue';
-import ChapterCourse from '@/components/Main/Course/ChapterCourse.vue';
-import StartChapter from '@/components/Main/Course/StartChapter.vue';
-import ChapterLongread from '@/components/Main/Course/ChapterLongread.vue';
 import Login from '@/components/Login/Login.vue';
 import AuthView from '@/views/AuthView.vue';
+import Welcome from '@/components/Login/Welcome.vue';
 
 Vue.use(VueRouter);
 
@@ -25,6 +23,11 @@ const routes = [
         path: '/auth',
         name: 'Login',
         component: Login
+      },
+      {
+        path: '/welcome',
+        name: 'welcom',
+        component: Welcome
       },
       {
         path: '/auth/forgotPassword',
@@ -44,6 +47,14 @@ const routes = [
         redirect: '/track'
       },
       {
+        path: '/next',
+        redirect: '/track'
+      },
+      {
+        path: '/help',
+        redirect: '/track'
+      },
+      {
         path: '/home',
         name: 'home',
         component: Home
@@ -57,23 +68,6 @@ const routes = [
         path: '/track/course/:id',
         name: 'course',
         component: Course
-      },
-      {
-        path: '/track/course/:id/chapter',
-        name: 'ChapterCourse',
-        component: ChapterCourse,
-        children: [
-          {
-            path: '/track/course/:id/chapter',
-            name: 'StartChapter',
-            component: StartChapter
-          },
-          {
-            path: '/track/course/:id/longread',
-            name: 'ChapterLongread',
-            component: ChapterLongread
-          },
-        ]
       },
       {
         path: '/sertificate',

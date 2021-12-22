@@ -3,6 +3,7 @@
     <div class="footer-btns">
       <div
         v-for="btn in tabs"
+        ref="helperMark"
         :key="btn.type"
         class="footer-btns__item"
         :class="{ active: $route.fullPath.split('/')[1] === btn.type }"
@@ -15,6 +16,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: 'Footer',
   props: {
@@ -23,7 +25,12 @@ export default {
       default: () => []
     }
   },
+  mounted() {
+    const position = ['home', null, this.$refs.helperMark[1].getBoundingClientRect().x - 87 + 'px'];
+    this.setHelperItems(position);
+  },
   methods: {
+    ...mapActions('helper', ['setHelperItems']),
     getImage(img) {
       return require('@/assets/images/Footer/' + img);
     }

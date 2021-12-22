@@ -69,12 +69,12 @@ export default {
       this.$router.push('/auth');
     },
     setPositionHelpItem() {
-      const topPosition = [
-        'home',
-        450 + 'px'
-        // this.$refs.helperMark.filter(h => h.innerText === 'Прогресс')[0].getBoundingClientRect().y + 'px'
-      ];
-      this.setHelperItems(topPosition);
+      // const topPosition = [
+      //   'home',
+      //   660 + 'px'
+      //   // this.$refs.helperMark.filter(h => h.innerText === 'Прогресс')[0].getBoundingClientRect().y + 'px'
+      // ];
+      // this.setHelperItems(topPosition);
     }
   }
 };
