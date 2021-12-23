@@ -56,6 +56,7 @@ export default {
       this.setStateHelper(true);
     }
     this.calculateAllProgress();
+    document.documentElement.scrollTop = 0;
   },
   destroyed() {
     window.removeEventListener('scroll', this.setPositionHelpItem);
