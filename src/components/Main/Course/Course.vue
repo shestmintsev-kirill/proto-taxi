@@ -147,9 +147,6 @@ export default {
         this.getPoints[0].chapters[1].subChapters.forEach((chapter, index) => {
           if (index === 0) chapter.status = 'passed';
           if (index > 0 && index < 4) chapter.status = 'open';
-          // if (step && sessionStorage.lastShowChapter !== '2.1') {
-          //   if (index === Number(sessionStorage.lastShowChapter))
-          // }
         });
       }
     },
@@ -161,15 +158,19 @@ export default {
     },
     handlerActionChapter(chapter) {
       //!Костыль
-      if (chapter.id === 1) {
-        this.showXAPI('1.1');
-      }
-      if (chapter.id === 2) {
-        if (!this.calculateProgress(chapter)) {
-          this.showXAPI('2.1');
-        } else {
-          this.showXAPI('2.2');
+      if (this.$route.params.id === '1') {
+        if (chapter.id === 1) {
+          this.showXAPI('1.1');
         }
+        if (chapter.id === 2) {
+          if (!this.calculateProgress(chapter)) {
+            this.showXAPI('2.1');
+          } else {
+            this.showXAPI('2.2');
+          }
+        }
+      } else {
+        this.showDefaultModal = true;
       }
     }
   }

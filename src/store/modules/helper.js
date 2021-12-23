@@ -17,9 +17,9 @@ export const helper = {
       },
       sertificate: {
         text: 'Чтобы просмотреть сертификат нажмите',
-        top: '-33px',
+        top: '400px',
         bottom: '',
-        left: '260px'
+        left: '20px'
       }
     }
   }),

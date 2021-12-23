@@ -47,13 +47,14 @@ module.exports = {
         // LOCAL_DOMAIN: JSON.stringify(appConfig('local_domain')),
         // BACKEND_VSHGU_URL: JSON.stringify(appConfig('api_url'))
       }),
-      new webpack.ProvidePlugin({
-        Vue: ['vue', 'default'],
-        mapGetters: ['vuex', 'mapGetters'],
-        mapActions: ['vuex', 'mapActions'],
-        mapMutations: ['vuex', 'mapMutations'],
-        mapState: ['vuex', 'mapState']
-      }),
+      //! Не работает, разобраться
+      // new webpack.ProvidePlugin({
+      //   Vue: ['vue', 'default'],
+      //   mapGetters: ['vuex', 'mapGetters'],
+      //   mapActions: ['vuex', 'mapActions'],
+      //   mapMutations: ['vuex', 'mapMutations'],
+      //   mapState: ['vuex', 'mapState']
+      // }),
       new webpack.HashedModuleIdsPlugin(),
       // new HtmlWebpackPlugin({
       //   filename: 'index.html',

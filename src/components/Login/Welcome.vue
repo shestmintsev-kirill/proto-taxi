@@ -24,17 +24,20 @@ export default {
     isFirstLogin: false
   }),
   mounted() {
-    setTimeout(() => {
-      if (!sessionStorage.firstLogin) {
-        this.isFirstLogin = true;
-      } else {
-        this.$router.push('/track');
-      }
-    }, 3000);
+    this.checkIsFirstLogin();
   },
   methods: {
     goToStartApp() {
       this.$router.push('/home');
+    },
+    checkIsFirstLogin() {
+      setTimeout(() => {
+        if (!sessionStorage.firstLogin) {
+          this.isFirstLogin = true;
+        } else {
+          this.$router.push('/track');
+        }
+      }, 3000);
     }
   }
 };

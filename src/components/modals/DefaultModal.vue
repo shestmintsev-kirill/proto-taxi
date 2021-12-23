@@ -49,7 +49,7 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-  position: fixed;
+  position: fixed !important;
   top: 0;
   left: 0;
   width: 100vw;

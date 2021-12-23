@@ -15,7 +15,7 @@
       />
     </div>
     <DefaultModal
-      v-if="activeTabType.length > 2"
+      v-else
       :text="'В данный момент машина находится на плановом техобслуживании. Выйдет на линию в 2022 году.'"
       @close-modal="setStateHelper(false)"
     />
@@ -55,12 +55,6 @@ export default {
         objInfo.modalBottom = bottom;
       }
       return objInfo;
-    }
-  },
-  created() {
-    //!Костыль на скрытие хелпера на вкладке "Сертификаты"
-    if (this.activeTabType[1] === 'sertificate') {
-      this.setStateHelper(false);
     }
   },
   mounted() {
