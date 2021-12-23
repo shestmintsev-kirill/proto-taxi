@@ -99,7 +99,7 @@ export default {
     if (this.$route.query.show) {
       sessionStorage.lastShowChapter = this.$route.query.show;
     }
-    if (sessionStorage.progress === '1') this.unlockNext(1);
+    if (sessionStorage.progress) this.unlockNext(Number(sessionStorage.progress));
     this.getChapters();
     document.documentElement.scrollTop = 0;
   },
@@ -145,8 +145,8 @@ export default {
     unlockNext(step) {
       if (step) {
         this.getPoints[0].chapters[1].subChapters.forEach((chapter, index) => {
-          if (index === 0) chapter.status = 'passed';
-          if (index > 0 && index < 4) chapter.status = 'open';
+          if (index < step) chapter.status = 'passed';
+          if (index === step) chapter.status = 'open';
         });
       }
     },
@@ -163,13 +163,10 @@ export default {
           this.showXAPI('1.1');
         }
         if (chapter.id === 2) {
-          if (!this.calculateProgress(chapter)) {
-            this.showXAPI('2.1');
-          } else {
-            this.showXAPI('2.2');
-          }
+          const courseIndex = chapter.subChapters.findIndex(s => s.status === 'open');
+          this.showXAPI(`${chapter.id}.${courseIndex + 1}`);
         }
-        if (chapter.id !== 1 && chapter.id !== 2) this.showDefaultModal = true;
+        if (chapter.id > 2) this.showDefaultModal = true;
       } else {
         this.showDefaultModal = true;
       }

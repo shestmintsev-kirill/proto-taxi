@@ -91,7 +91,8 @@ export default {
     },
     redirectToLastCourse() {
       if (this.nameFromRedirect.replaceAll('/', '') === 'back') {
-        if (sessionStorage.lastShowChapter === '2.1') sessionStorage.progress = '2';
+        this.stepToNextCourse();
+
         const { id, name } = JSON.parse(sessionStorage.startCourse);
         this.$router.replace({
           name: 'course',
@@ -99,7 +100,8 @@ export default {
           query: { n: name }
         });
       } else if (this.nameFromRedirect.replaceAll('/', '') === 'next') {
-        if (sessionStorage.lastShowChapter === '2.1') sessionStorage.progress = '1';
+        this.stepToNextCourse();
+
         const { id, name } = JSON.parse(sessionStorage.startCourse);
         const nextTincan =
           sessionStorage.lastShowChapter === '1.9'
@@ -111,6 +113,11 @@ export default {
           query: { n: name, show: nextTincan }
         });
       }
+    },
+    stepToNextCourse() {
+      const [chapterIndex, courseIndex] = sessionStorage.lastShowChapter.split('.');
+      if (chapterIndex === '2' && courseIndex !== '4' && sessionStorage.progress !== '3')
+        sessionStorage.progress = courseIndex;
     }
   }
 };
