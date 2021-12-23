@@ -169,6 +169,7 @@ export default {
             this.showXAPI('2.2');
           }
         }
+        if (chapter.id !== 1 && chapter.id !== 2) this.showDefaultModal = true;
       } else {
         this.showDefaultModal = true;
       }
