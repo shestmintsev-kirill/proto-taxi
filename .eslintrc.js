@@ -65,10 +65,6 @@ module.exports = {
     }],
     quotes: [2, 'single'],
     'no-multi-assign': 2,
-    'vue/html-indent': [2, 2, {
-      attribute: 1,
-      closeBracket: 0
-    }],
     'vue/max-attributes-per-line': [2, {
       singleline: 5,
       multiline: {

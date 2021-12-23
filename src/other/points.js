@@ -30,32 +30,37 @@ export const points = [
           },
           {
             type: 'course',
-            status: 'close',
+            status: 'passed',
             title: 'Местоположение клиента'
           },
           {
             type: 'course',
-            status: 'close',
+            status: 'passed',
             title: 'Препятствие на пути'
           },
           {
             type: 'course',
-            status: 'close',
+            status: 'passed',
             title: 'Отмена заказа'
           },
           {
             type: 'course',
-            status: 'close',
+            status: 'passed',
             title: 'Плохая связь'
           },
           {
             type: 'course',
-            status: 'close',
+            status: 'passed',
+            title: 'Ожидание клиента'
+          },
+          {
+            type: 'course',
+            status: 'passed',
             title: 'Общение в чате'
           },
           {
             type: 'attestation',
-            status: 'close',
+            status: 'passed',
             title: 'Тестирование'
           }
         ]
@@ -66,7 +71,7 @@ export const points = [
         subChapters: [
           {
             type: 'course',
-            status: 'close',
+            status: 'open',
             title: 'Введение'
           },
           {
@@ -353,346 +358,218 @@ export const points = [
     id: '2',
     chapters: [
       {
-        title: 'Разговор по телефону',
+        title: 'Основы ПДД (Правила дорожного движения)',
         id: 1,
         subChapters: [
           {
             type: 'course',
             status: 'close',
-            title: 'Введение'
+            title: 'Организация дорожного движения в РФ'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Общение по телефону'
+            title: 'Основные положения ПДД'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Местоположение водителя'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Внешний вид клиента'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Местоположение клиента'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Препятствие на пути'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Отмена заказа'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Плохая связь'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Общение в чате'
-          },
-          {
-            type: 'attestation',
-            status: 'close',
-            title: 'Тестирование'
+            title: 'Организация дорожного движения в Москве'
           }
         ]
       },
       {
-        title: 'Начало поездки',
+        title: 'Как законы управляют работой такси в РФ',
         id: 2,
         subChapters: [
           {
             type: 'course',
             status: 'close',
-            title: 'Введение'
+            title: 'Регулирование деятельности такси в РФ'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Уточнение адреса'
+            title: 'Федеральная и региональная системы регулирования'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Посадка пассажира'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Способ оплаты'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Помощь при посадке'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Пассажиры с особыми потребностями'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Пассажиры с питомцами'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Отказ в посадке'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Пассажиры с детьми'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Ошибка в заказе'
-          },
-          {
-            type: 'attestation',
-            status: 'close',
-            title: 'Тестирование'
-          },
+            title: 'Особенности допуска физических лиц'
+          }
         ]
       },
       {
-        title: 'В пути',
+        title: 'Как законы управляют работой такси в Москве',
         id: 3,
         subChapters: [
           {
             type: 'course',
             status: 'close',
-            title: 'Введение'
+            title: 'Регулирование деятельности такси в Москве'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Выбор маршрута'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Остановка по пути'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Маршрут перестроен'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Комфорт в пути'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Угощение'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Поддержание беседы'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Помощь во время пути'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Отказ на просьбу пассажира'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Правила перевозки'
-          },
-          {
-            type: 'attestation',
-            status: 'close',
-            title: 'Тестирование'
-          },
+            title: 'Требования законов Москвы'
+          }
         ]
       },
       {
-        title: 'Завершение поездки',
+        title: 'Как проходит предрейсовый медицинский осмотр',
         id: 4,
         subChapters: [
           {
             type: 'course',
             status: 'close',
-            title: 'Введение'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Уточнение места высадки'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Просьба компенсировать'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Остановка запрещена'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Высадка пассажира'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Помощь с багажом'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Забытые вещи'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Оценка поездки'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Изменение места высадки'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Прощание'
-          },
-          {
-            type: 'attestation',
-            status: 'close',
-            title: 'Тестирование'
-          },
+            title: ' '
+          }
         ]
       },
       {
-        title: 'Разговор с сотрудником ГИБДД',
+        title: 'Как проходит предрейсовый контроль автомобиля',
         id: 5,
         subChapters: [
           {
             type: 'course',
             status: 'close',
-            title: 'Остановка для осмотра'
+            title: 'Прохождение предрейсового контроля'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Предупреждение о преграде'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Плановый осмотр'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Предупреждение о нарушении'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Нарушение ПДД'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Штраф'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Подозрение в нарушении'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Свидетель ДТП'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Занос на дороге'
+            title: 'Параметры контроля'
           }
         ]
       },
       {
-        title: 'Поведение в конфликтных и иных нестандартных ситуациях',
+        title: 'Как сделать перевозки безопасными',
         id: 6,
         subChapters: [
           {
             type: 'course',
             status: 'close',
-            title: 'Доставка посылки'
+            title: 'Требования к перевозкам пассажиров и багажа'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Доставка забытых вещей'
+            title: 'Профилактика безопасности перевозок'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Клиент повредил машину'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Полиция'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'ДПС'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Скорая помощь'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Багаж поврежден'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Агрессивный пассажир'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Неправильная точка'
+            title: 'Страхование перевозок'
           }
         ]
-      }
+      },
+      {
+        title: 'Как заполнять путевой лист',
+        id: 7,
+        subChapters: [
+          {
+            type: 'course',
+            status: 'close',
+            title: 'Порядок заполнения'
+          },
+          {
+            type: 'course',
+            status: 'close',
+            title: 'Обязательные разделы'
+          }
+        ]
+      },
+      {
+        title: 'Как работает и отдыхает водитель такси',
+        id: 8,
+        subChapters: [
+          {
+            type: 'course',
+            status: 'close',
+            title: 'Режим рабочего времени и времени отдыха'
+          },
+          {
+            type: 'course',
+            status: 'close',
+            title: 'Штраф за нарушение режима'
+          }
+        ]
+      },
+      {
+        title: 'Какой автомобиль может быть такси',
+        id: 9,
+        subChapters: [
+          {
+            type: 'course',
+            status: 'close',
+            title: ' '
+          }
+        ]
+      },
+      {
+        title: 'Кто может стать водителем такси',
+        id: 10,
+        subChapters: [
+          {
+            type: 'course',
+            status: 'close',
+            title: ' '
+          }
+        ]
+      },
+      {
+        title: 'Как контролируются перевозки',
+        id: 11,
+        subChapters: [
+          {
+            type: 'course',
+            status: 'close',
+            title: 'Административные правонарушения'
+          },
+          {
+            type: 'course',
+            status: 'close',
+            title: 'Регулирование перевозок в Москве'
+          }
+        ]
+      },
+      {
+        title: 'Как вести себя в случае ДТП',
+        id: 12,
+        subChapters: [
+          {
+            type: 'course',
+            status: 'close',
+            title: 'Действия водителя при ДТП'
+          },
+          {
+            type: 'course',
+            status: 'close',
+            title: 'Оформление ДТП и составление Европротокола'
+          }
+        ]
+      },
+      {
+        title: 'Как оказать первую медицинскую помощь',
+        id: 13,
+        subChapters: [
+          {
+            type: 'course',
+            status: 'close',
+            title: 'Состав медицинской аптечки'
+          },
+          {
+            type: 'course',
+            status: 'close',
+            title: 'Действия при оказании первой медицинской помощи'
+          },
+          {
+            type: 'course',
+            status: 'close',
+            title: 'Правила оказания медицинской помощи'
+          }
+        ]
+      },
     ]
   },
   {
@@ -701,343 +578,77 @@ export const points = [
     id: '3',
     chapters: [
       {
-        title: 'Разговор по телефону',
+        title: 'Как работать с агрегаторами такси',
         id: 1,
         subChapters: [
           {
             type: 'course',
             status: 'close',
-            title: 'Введение'
+            title: 'Присоединение к агрегатору такси и регистрация в приложении'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Общение по телефону'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Местоположение водителя'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Внешний вид клиента'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Местоположение клиента'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Препятствие на пути'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Отмена заказа'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Плохая связь'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Общение в чате'
-          },
-          {
-            type: 'attestation',
-            status: 'close',
-            title: 'Тестирование'
+            title: 'Правила работы водителей с агрегаторами'
           }
         ]
       },
       {
-        title: 'Начало поездки',
+        title: 'Как класс такси зависит от стандартов',
         id: 2,
         subChapters: [
           {
             type: 'course',
             status: 'close',
-            title: 'Введение'
+            title: 'Взаимодействие водителя с пассажирами'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Уточнение адреса'
+            title: 'Классификатор автомобилей такси'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Посадка пассажира'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Способ оплаты'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Помощь при посадке'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Пассажиры с особыми потребностями'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Пассажиры с питомцами'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Отказ в посадке'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Пассажиры с детьми'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Ошибка в заказе'
-          },
-          {
-            type: 'attestation',
-            status: 'close',
-            title: 'Тестирование'
-          },
+            title: 'Оказание различных видов услуг'
+          }
         ]
       },
       {
-        title: 'В пути',
+        title: 'Как перевозить особые категории пассажиров',
         id: 3,
         subChapters: [
           {
             type: 'course',
             status: 'close',
-            title: 'Введение'
+            title: 'Перевозка детей в возрасте до 11 лет'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Выбор маршрута'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Остановка по пути'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Маршрут перестроен'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Комфорт в пути'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Угощение'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Поддержание беседы'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Помощь во время пути'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Отказ на просьбу пассажира'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Правила перевозки'
-          },
-          {
-            type: 'attestation',
-            status: 'close',
-            title: 'Тестирование'
-          },
+            title: 'Перевозка инвалидов и собак-поводырей'
+          }
         ]
       },
       {
-        title: 'Завершение поездки',
+        title: 'Как перевозить животных',
         id: 4,
         subChapters: [
           {
             type: 'course',
             status: 'close',
-            title: 'Введение'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Уточнение места высадки'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Просьба компенсировать'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Остановка запрещена'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Высадка пассажира'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Помощь с багажом'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Забытые вещи'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Оценка поездки'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Изменение места высадки'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Прощание'
-          },
-          {
-            type: 'attestation',
-            status: 'close',
-            title: 'Тестирование'
-          },
+            title: ' '
+          }
         ]
       },
       {
-        title: 'Разговор с сотрудником ГИБДД',
+        title: 'Как перевозить крупногабаритный и тяжеловесный багаж',
         id: 5,
         subChapters: [
           {
             type: 'course',
             status: 'close',
-            title: 'Остановка для осмотра'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Предупреждение о преграде'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Плановый осмотр'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Предупреждение о нарушении'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Нарушение ПДД'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Штраф'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Подозрение в нарушении'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Свидетель ДТП'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Занос на дороге'
-          }
-        ]
-      },
-      {
-        title: 'Поведение в конфликтных и иных нестандартных ситуациях',
-        id: 6,
-        subChapters: [
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Доставка посылки'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Доставка забытых вещей'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Клиент повредил машину'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Полиция'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'ДПС'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Скорая помощь'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Багаж поврежден'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Агрессивный пассажир'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Неправильная точка'
+            title: ' '
           }
         ]
       }
@@ -1049,343 +660,214 @@ export const points = [
     id: '4',
     chapters: [
       {
-        title: 'Разговор по телефону',
+        title: 'История Москвы',
         id: 1,
         subChapters: [
           {
             type: 'course',
             status: 'close',
-            title: 'Введение'
+            title: 'Древняя Москва'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Общение по телефону'
+            title: 'Москва в средние века и новое время'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Местоположение водителя'
+            title: 'Москва в 20 веке'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Внешний вид клиента'
+            title: 'Москва современная'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Местоположение клиента'
+            title: 'Музеи истории города'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Препятствие на пути'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Отмена заказа'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Плохая связь'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Общение в чате'
-          },
-          {
-            type: 'attestation',
-            status: 'close',
-            title: 'Тестирование'
+            title: 'Полезные ссылки об истории Москвы'
           }
         ]
       },
       {
-        title: 'Начало поездки',
+        title: 'Устройство Москвы',
         id: 2,
         subChapters: [
           {
             type: 'course',
             status: 'close',
-            title: 'Введение'
+            title: 'Планировка города'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Уточнение адреса'
+            title: 'Районы Москвы'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Посадка пассажира'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Способ оплаты'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Помощь при посадке'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Пассажиры с особыми потребностями'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Пассажиры с питомцами'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Отказ в посадке'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Пассажиры с детьми'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Ошибка в заказе'
-          },
-          {
-            type: 'attestation',
-            status: 'close',
-            title: 'Тестирование'
-          },
+            title: 'Новая Москва'
+          }
         ]
       },
       {
-        title: 'В пути',
+        title: 'Достопримечательности',
         id: 3,
         subChapters: [
           {
             type: 'course',
             status: 'close',
-            title: 'Введение'
+            title: 'Самые известные достопримечательности'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Выбор маршрута'
+            title: 'Новые культурные объекты'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Остановка по пути'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Маршрут перестроен'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Комфорт в пути'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Угощение'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Поддержание беседы'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Помощь во время пути'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Отказ на просьбу пассажира'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Правила перевозки'
-          },
-          {
-            type: 'attestation',
-            status: 'close',
-            title: 'Тестирование'
-          },
+            title: 'Молодежные места'
+          }
         ]
       },
       {
-        title: 'Завершение поездки',
+        title: 'Природа Москвы',
         id: 4,
         subChapters: [
           {
             type: 'course',
             status: 'close',
-            title: 'Введение'
+            title: 'На 7 холмах'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Уточнение места высадки'
+            title: 'Реки'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Просьба компенсировать'
+            title: 'Парки, леса и заповедники'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Остановка запрещена'
+            title: 'Растительный мир'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Высадка пассажира'
+            title: 'Животный мир'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Помощь с багажом'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Забытые вещи'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Оценка поездки'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Изменение места высадки'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Прощание'
-          },
-          {
-            type: 'attestation',
-            status: 'close',
-            title: 'Тестирование'
-          },
+            title: 'Экологические тропы'
+          }
         ]
       },
       {
-        title: 'Разговор с сотрудником ГИБДД',
+        title: 'Традиции Москвы',
         id: 5,
         subChapters: [
           {
             type: 'course',
             status: 'close',
-            title: 'Остановка для осмотра'
+            title: 'Календарь знаковых событий'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Предупреждение о преграде'
+            title: 'Быт москвичей'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Плановый осмотр'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Предупреждение о нарушении'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Нарушение ПДД'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Штраф'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Подозрение в нарушении'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Свидетель ДТП'
-          },
-          {
-            type: 'course',
-            status: 'close',
-            title: 'Занос на дороге'
+            title: 'Сувениры'
           }
         ]
       },
       {
-        title: 'Поведение в конфликтных и иных нестандартных ситуациях',
+        title: 'Городские легенды',
         id: 6,
         subChapters: [
           {
             type: 'course',
             status: 'close',
-            title: 'Доставка посылки'
+            title: 'Народные названия городских мест'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Доставка забытых вещей'
+            title: 'Старые названия городских мест'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Клиент повредил машину'
+            title: 'Мемы о Москве и москвичах'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Полиция'
+            title: 'Фильмы о Москве'
+          }
+        ]
+      },
+      {
+        title: 'Места в Москве',
+        id: 7,
+        subChapters: [
+          {
+            type: 'course',
+            status: 'close',
+            title: 'Аэропорты, вокзалы, метро'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'ДПС'
+            title: 'Народные названия мест'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Скорая помощь'
+            title: 'Культурный досуг'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Багаж поврежден'
+            title: 'Старые названия мест'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Агрессивный пассажир'
+            title: 'Устройство города'
           },
           {
             type: 'course',
             status: 'close',
-            title: 'Неправильная точка'
+            title: 'Молодежные места. Сленг'
+          },
+          {
+            type: 'course',
+            status: 'close',
+            title: 'Традиции Москвы'
+          },
+          {
+            type: 'course',
+            status: 'close',
+            title: 'Сувениры из Москвы'
+          },
+          {
+            type: 'course',
+            status: 'close',
+            title: 'Достопримечательности'
           }
         ]
       }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <tincan xmlns="http://projecttincan.com/tincan.xsd">
+      <activities>
+        <activity id="https://courseID.com/xapi/testPackage4-2.2" type="http://adlnet.gov/expapi/activities/course">
+          <name>урок 4-2.2</name>
+          <description lang="en-US">урок 4-2.2</description>
+          <launch lang="en-us">content/index.html</launch>
+        </activity>
+      </activities>
+    </tincan>

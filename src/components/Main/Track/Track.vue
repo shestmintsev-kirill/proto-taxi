@@ -91,19 +91,21 @@ export default {
     },
     redirectToLastCourse() {
       if (this.nameFromRedirect.replaceAll('/', '') === 'back') {
-        if (sessionStorage.lastShowChapter === '1.4') sessionStorage.progress = '1';
         if (sessionStorage.lastShowChapter === '2.1') sessionStorage.progress = '2';
         const { id, name } = JSON.parse(sessionStorage.startCourse);
-        this.$router.push({
+        this.$router.replace({
           name: 'course',
           params: { id },
           query: { n: name }
         });
       } else if (this.nameFromRedirect.replaceAll('/', '') === 'next') {
-        if (sessionStorage.lastShowChapter === '2.1') sessionStorage.progress = '2';
+        if (sessionStorage.lastShowChapter === '2.1') sessionStorage.progress = '1';
         const { id, name } = JSON.parse(sessionStorage.startCourse);
-        const nextTincan = (Number(sessionStorage.lastShowChapter) + 0.1).toFixed(1);
-        this.$router.push({
+        const nextTincan =
+          sessionStorage.lastShowChapter === '1.9'
+            ? '1.10'
+            : (Number(sessionStorage.lastShowChapter) + 0.1).toFixed(1);
+        this.$router.replace({
           name: 'course',
           params: { id },
           query: { n: name, show: nextTincan }

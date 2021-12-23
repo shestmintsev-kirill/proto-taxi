@@ -9,7 +9,7 @@
         </p>
       </div>
       <div>
-        <div v-for="(chapter, i) in chapters" :key="i" class="modal progress-wrapper">
+        <div v-for="(chapter, chapterIndex) in chapters" :key="chapterIndex" class="modal progress-wrapper">
           <div
             class="course-progress"
             :style="{
@@ -47,17 +47,23 @@
             </div>
             <div class="track-wrapper">
               <div
-                v-for="(subChapter, i) in chapter.subChapters"
-                :key="i"
+                v-for="(subChapter, subChapterIndex) in chapter.subChapters"
+                :key="subChapterIndex"
                 class="course-progress__track"
-                @click="showXAPI(`${chapter.id}.${i + 1}`, subChapter.status)"
+                @click="showXAPI(`${chapter.id}.${subChapterIndex + 1}`, subChapter.status, subChapter.type)"
               >
                 <img :src="getImageStatusCourse(subChapter)" alt="statusCourse" />
                 <div class="name">{{ sliceText(subChapter.title) }}</div>
               </div>
             </div>
-            <button class="course-progress__btn button" @click="unlockNext()">
-              {{ calculateProgress(chapter) ? 'Продолжить' : 'Начать' }}
+            <button class="course-progress__btn button" @click="handlerActionChapter(chapter)">
+              {{
+                calculateProgress(chapter) === 100
+                  ? 'Повторить'
+                  : calculateProgress(chapter)
+                  ? 'Продолжить'
+                  : 'Начать'
+              }}
             </button>
           </div>
         </div>
@@ -94,14 +100,15 @@ export default {
       sessionStorage.lastShowChapter = this.$route.query.show;
     }
     if (sessionStorage.progress === '1') this.unlockNext(1);
-    if (sessionStorage.progress === '2') this.unlockNext(2);
     this.getChapters();
     document.documentElement.scrollTop = 0;
   },
   methods: {
-    showXAPI(xapi_index, status) {
-      if (this.$route.params.id !== '1') this.showDefaultModal = true;
-      if (status === 'close') return;
+    showXAPI(xapi_index, status, type) {
+      if (status === 'close' || type === 'attestation') {
+        this.showDefaultModal = true;
+        return;
+      }
       sessionStorage.lastShowChapter = xapi_index;
       this.$router.push({
         query: { n: this.$route.query.n, show: xapi_index }
@@ -125,7 +132,7 @@ export default {
           return p.chapters.map((c, index) => {
             return {
               ...c,
-              expand: index === 0
+              expand: index === 0 || index === 1
             };
           });
         })
@@ -136,11 +143,13 @@ export default {
       return Math.floor((passedSubChapters.length / chapter.subChapters.length) * 100);
     },
     unlockNext(step) {
-      if (step) this.getPoints[0].chapters[1].subChapters[0].status = 'open';
-      if (step === 2) {
+      if (step) {
         this.getPoints[0].chapters[1].subChapters.forEach((chapter, index) => {
           if (index === 0) chapter.status = 'passed';
           if (index > 0 && index < 4) chapter.status = 'open';
+          // if (step && sessionStorage.lastShowChapter !== '2.1') {
+          //   if (index === Number(sessionStorage.lastShowChapter))
+          // }
         });
       }
     },
@@ -149,6 +158,19 @@ export default {
         return text.slice(0, 18) + '...';
       }
       return text;
+    },
+    handlerActionChapter(chapter) {
+      //!Костыль
+      if (chapter.id === 1) {
+        this.showXAPI('1.1');
+      }
+      if (chapter.id === 2) {
+        if (!this.calculateProgress(chapter)) {
+          this.showXAPI('2.1');
+        } else {
+          this.showXAPI('2.2');
+        }
+      }
     }
   }
 };
